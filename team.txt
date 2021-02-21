@@ -1,3 +1,10 @@
 ENSE 375 Group B
-(Slogan)
-Team members: Tristan Brown-Hannibal, Anupras Burokas, Karlee Fidek, Qurrat Ulain, Jonathan Vargas
+
+"Don't fix bugs later; fix them now." - Steve Maguire
+
+Team members: 
+- Tristan Brown-Hannibal
+- Anupras Burokas
+- Karlee Fidek
+- Qurrat Ulain
+- Jonathan Vargas
