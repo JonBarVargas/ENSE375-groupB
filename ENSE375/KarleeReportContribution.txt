@@ -1,6 +1,7 @@
 Core Concepts of Git
 
-A version control system (VCS) enables changes within files such as device configuration files, code files, documentation files, or text files to be recorded and tracked over time. Git is a version control system that is most often used with software code but also works well with text files. Git has the ability to store a timeline
+A version control system (VCS) enables changes within files such as device configuration files, code files, documentation files, or text files to be recorded and tracked over time. Git
+is a version control system that is most often used with software code but also works well with text files. Git has the ability to store a timeline
 of different versions of files over time. The stored records can be used to restore files to their previous versions. Another feature provided by Git is the ability to 
 modify and maintain multiple versions of the same file simultaneously. Maintaining one version of a file while modifying another version of the same file is a common occurrence
 in software development; for example, the working version of the file - production code - is maintained while new features are added and modified in a separate version of
