@@ -1,0 +1,20 @@
+2.1 DeepSource Code Review Plugin
+	A developer team is fallible when it comes to writing code. 
+To catch errors before deployment, a team may choose to hold 
+numerous code reviews. To help with this, git extensions such as 
+DeepSource continuously analyze the source files.
+
+DeepSource is a Code review plugin that will continuously analyze 
+code in a repository. This service can detect and flag 
+anti-patterns, bug risks, and any code that may reduce performance. 
+It does this by connecting to a repository and run scripts 
+at a file level. DeepSource currently supports the 
+following languages:  Go, Java, JavaScript, Python, and Ruby. In 
+addition to detecting issues in code DeepSource can suggest fixes 
+and create pull requests integrating the fixes.
+
+Using a Code review plugin such as DeepSource can help automate
+ code reviews as it helps find and fix errors with each commit. 
+Like other automation tools, DeepSource saves a team’s time spent
+ on debugging. Thus, allowing more time to be allocated other
+ important development aspects such as testing.
