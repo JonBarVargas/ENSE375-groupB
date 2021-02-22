@@ -1,0 +1,85 @@
+3.0 Mercurial
+Mercurial is a modern VCS, and like other VCS, it was made to allow multi-developer teams work on a project, while not passing around entire files, and also to automatically remember changes made to the code. Mercurial is very similar to Git, in that it uses a distributed model with a directed acyclic graph commit history. Mercurial was also developed in 2005 by Matt Mackall, for similar reasons to Git, that is, the Bitmover decision. Mercurial is written mostly in Python, with a few performance important parts written in C.
+
+Constraints
+A modern VCS will have to contend with many requirements. A singular modern project can contain millions of files, millions of changes within those files, and numerous users revising at all once. This high volume of use can cause a significant burden to the hardware running the VCS, most notably the disk drive, and network drive. This is why when designing for Mercurial, Mackall focused on creating a simple, scalable and efficient piece of software. A solution for performance Mackall found was revlogs, short for revision logs.
+
+Revlogs
+Revlogs are a data format which is useful in storing different versions of data. Revlogs allow for efficient storage and retrieval of all revisions of file contents. Mercurial uses this format for most of its stored information.  A revlog’s main aim is to achieve O(1) performance for read and write operations, but still limit its size. Each revision is uniquely identified by hashing its contents and its previous revisions hash to create a new address referred to as a nodeID.  Revlogs are append-only, and thus cannot be edited once created. To include information about a new revision, a new identifier must be created. A revlog consists of two parts: a data file and an index file.
+Index File
+The index file contains a fixed length record for every revision.  The record consists of multiple parts as seen in the table below. An index file is important as it allows us to directly find the position of the data in the file, eliminating the need to seek through the disk to find the data. This is what allows for O(1) performance.
+
+Bytes
+Type
+Purpose
+6
+Hunk Offset
+The number of bytes to the beginning of relevant hunk
+2
+Bit Flags
+Flags for unique behavior
+4
+Hunk Length
+The length of the relevant hunk
+4
+Uncompressed Length
+Length of the data uncompressed
+4
+Base Revision
+The revision that deltas are applied to
+4
+Link Revision
+A revision that this revision is permanently linked to.
+4
+Parent 1 revision
+Tracks a parent of revision
+4
+Parent 2 revision
+Tracks a secondary parent of revision
+32
+Hash
+A hash of the revision’s content
+
+
+Data File
+A data file linearly contains serial hunks of compressed data, one hunk for every revision. Hunks can be a standalone complete version of a revision, or they can be a delta of the previous hunks. A delta is a grouping of chunks which have a start, an end, and replacement bytes. Basically, it's the difference in bytes between revisions.  A delta can allow for a reduction in file size. Whether a revision is saved in complete or as a chain of deltas, depends on whichever is calculated to be smaller.
+Implementation of Revlogs
+In the pursuit of saving versioned data, Mercurial uses three types of revlogs. Firstly, a filelog, which has information relating to revisions for files existing in a specific repository. Next, there is a manifestlog, which contains a catalog of files in the repository at the time of the revision’s creation. And lastly, a changelog, which contains metadata about the commit. Metadata can include information such as date, time, changes to files, and any included description about the commit. In the code of Mercurial, the changelog, manifestlog and filelog are considered subclasses of the class revlogs.
+These three revlogs are connected in a specific manner. The changelog points to the manifestlog. The manifestlog will then point to the filelogs. At each level, the linkrev(Link revision) will point back to changelog. This allows for efficient travel through the revlogs.
+
+
+Working Directory
+The working directory in Mercurial is a higher level interface in which users can create, edit and read human-understandable text files. In a sense it is a new revision, waiting to be committed. The way Mercurial represents the working directory of a repository is through a data structure called a dirstate. The three main pieces of information the dirstate tracks are: checked out revisions, copies of files/renamed files, and which files Mercurial is actively controlling. A file being controlled by Mercurial means that we log: the size, edit times, its current mode and its current state. The state of the file can be:
+Normal
+Added
+Removed
+Merged
+When a revision has been checked out, the parents will also be recorded. Storing all this information in a dirstate means that when it comes time to commit, the process can be carried out at a much faster and efficient speed.
+
+Implementation of version control concepts
+Common concepts used in VCS are related to the idea of branching and tagging commits. Branching is the idea of copying of controlled files into another identical object, which then can be managed separately from the original files. This is useful for testing new features, or working concurrently with other users. Tags are used to indicate specific revisions which are important, or to better describe what a revision is. For example, naming a revision v1.0 or v2.0.  Mercurial implements these features in slightly different ways than most other VCS, namely Git.
+
+Mercurial branches
+When working in a directory, a user can enter the command branch to change the name of the branch when we next commit. If a user does not use the branch command the revision metadata will include the name of the parent’s branch when committing. The default branch in Mercurial is called default. When working with branches in Mercurial a user can use the command update to update to the latest revision using that branch's name. An example of this can be seen in the figure below.  
+
+In this figure we can see a named branch. An update default would bring the repository to the latest default branch revision, Rev3. While an update feature 1 would bring the repository to Rev5. These branches become permanent parts of the revision metadata, and cannot be changed without rewriting history. This is different from Git, which uses a pointer reference to a revision, and this pointer reference can be deleted, which in effect would also delete the branch. The Git way of managing branches is proving to be the more popular method, and consequently Mercurial has an extension called Bookmarks which implements the Git method in Mercurial. Mercurial will in the future will probably implement Bookmarks to be a core feature of the service.
+
+Tags
+Tags in mercurial are implemented using a .hgtags file. The format of the file is an append only where each line contains a revision nodeID and the tag name for that revision. The .hgtags file is like any other file in the repository, and will be committed and saved the same way as others. The newest tag for any revision takes precedence. This design allows users to change tags, but still maintain a history of tags. It also allows for a tagging of previous revisions. This use of tags within the source tree is different from Git. Git does not include tags in the source tree.
+Module Structure
+
+Mercurial utilizes a simple command-line interface to interact with users of the software. Mercurial is written in python and implements modules, which are singular files of code. The modules are connected via imports, and create an import graph. This use of modules helps to organize the structure of Mercurial and allows for a clear separation of concerns for every module.  For example, the module commands will contain every command that a user can input into the command line. And since Mercurial is open-source, users can view the code quickly and see how it works. When Mercurial is installed, common and useful extensions are also included, but are separated from the core functionality and must be activated explicitly.
+
+Extensions
+One of Mercurial's best features is its ability to be extendable. Python being a simpler language, combined with the fact that Mercurial’s API is robust, means that the ability to alter or create behaviour within the software is greatly enhanced. On startup of Mercurial users can edit the config file to include a path to a Python module. This Python module can do things such as add new commands or add new types of repositories. There are very few things that a dedicated programmer cannot change about Mercurial if they choose. An example of an extension is one we previously discussed, The bookmark extension. A user had a problem with the way Mercurial developed the branching mechanism, and so developed a solution via an extension. This extension became popular and now may become part of the core feature set of Mercurial. This process clearly demonstrates the power of when a software project is extendable. Another example of Mercurial extensibility comes in the form of hooks.
+
+Hooks
+Hooks are ways for Mercurial to perform automatic responses to certain events that happen in a repository. This allows for the outside world to be affected by changes that occur within Mercurial.  There are two main ways Mercurial can enact these calls. Firstly, it can call a script in a shell to perform actions. But, it can also implement python modules and use calls to a function in that module. The second way of handling hooks is generally more efficient, and also allows for a more robust way of completing complex communication between objects.  An example of a hook can be found when updating a file. We can use a Python hook to check the updates made to a file, and see if the coding style meets the requirements of the project. If they do not meet the requirements of the coding style, the hook will reject the revision from the repository.
+
+---------------------------------------------------------------------------------------
+A DAG node which represents a commit cannot depend on itself or its children nodes. The limited dependency creates the acyclic structure and the directed architecture only allows movement from parent nodes to children nodes. There can be three types of DAG nodes which can be determined based on the node’s characteristics. The first type of node is a root node which has no parents. A merge node is the second type of node and occurs when a node has more than one parent which forces a merge to take place. The third type of node has no children nodes and is called a head node. Figure 1 shows a DAG in which all three node types are present. A DAG is useful in facilitating the benefits of a distributed VCS such as having accessible backups; allowing easy and consistent branching or merging; and maintaining a history of relationships between all local commits.
+---------------------------------------------------------------------------------------
+2.2 SonarCloud Quality Plugin
+SonarCloud is a code analysis plugin. It uses the cloud to connect to a remote repository, such as GitHub, and then reviews the code looking for issues. These issues can include bugs, vulnerabilities, and ‘Code Smells’. Bugs are errors in the code which cause the program to run in unwanted ways. Vulnerabilities are problems in the code which pose a security threat. Code smells are features of codes which may in the future cause undesired effects such as reduced maintainability or reduced performance.
+SonarCloud can be used at three levels: in the pull request, in the codebase, and in the editor. When used at the editor level, it is not a GitHub extension as it uses the companion linter SonarLint. When used at the pull request, SonarCloud provides a new interface which allows the person granting the pull request to see results of the code analysis, helping to inform the user to accept or deny the request. Sometimes issues can only be found when analyzing the entirety of a codebase as a single unit. SonarCloud can achieve this by being integrated directly into the repository of a codebase. Then after every merge, the code is analyzed and the information is once again displayed to the user.
+This plugin is extremely helpful in ensuring that code is maintainable, reliable and safe. It is another check for code to help the developer know the state of their codebase, and any issues that arise. More information is always better, and SonarCloud adds another level of verification outside of testing or human review.
