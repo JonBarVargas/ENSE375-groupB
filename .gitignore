@@ -2,3 +2,6 @@
 *.class
 bin
 build
+.settings
+.classpath
+.project
