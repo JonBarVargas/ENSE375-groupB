@@ -1,0 +1,4 @@
+.gradle
+*.class
+bin
+build

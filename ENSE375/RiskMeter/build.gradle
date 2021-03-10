@@ -1,0 +1,52 @@
+plugins {
+	id 'java'
+}
+
+repositories {
+	mavenCentral()
+}
+
+sourceSets {
+    main {
+        java {
+            srcDirs = ['src/main/java/com/uregina']
+            outputDir = file('bin')
+        }
+        
+    }
+    test {
+        java {
+            srcDirs = ['src/test/java/com/uregina/app']
+            outputDir = file('bin')
+        }
+       
+    }
+}
+
+// dependencies {
+    
+//     // testImplementation 'org.junit.jupiter:junit-jupiter'
+//     // testImplementation (platform('org.junit:junit-bom:5.7.1'))
+//     testImplementation group: 'junit', name: 'junit', version: '4.4'
+// }
+dependencies {
+    testCompile("org.junit.jupiter:junit-jupiter-api:5.2.0")
+    testRuntime("org.junit.jupiter:junit-jupiter-engine:5.2.0")
+}
+
+dependencies {
+    testCompile("junit:junit:4.12")
+    testRuntime("org.junit.vintage:junit-vintage-engine:5.2.0")
+}
+
+
+
+test {
+	useJUnitPlatform()
+	testLogging {
+		events "passed", "skipped", "failed"
+	}
+    reports{
+        junitXml.enabled = true
+    }
+}
