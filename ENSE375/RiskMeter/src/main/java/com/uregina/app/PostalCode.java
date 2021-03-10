@@ -6,26 +6,31 @@ public class PostalCode
 	private String postalCode;
     	public static boolean isValidPostalCode(String postalCode )
     	{
-		//ToDo: add you code here
 			return postalCode.matches("^K1[A-T]-[0-9][A-Z][0-9]");
     	}
     	public PostalCode(String postalCode) throws InvalidPostalCodeException
     	{
-    		this.postalCode = postalCode;
+			if(PostalCode.isValidPostalCode(postalCode)){
+    			this.postalCode = postalCode;
+			} else {
+				throw new InvalidPostalCodeException();
+			}
     	}
     	public int getRegionVerticalIndex()
     	{
-	    	//ToDo: add your code here (you can update the return statement) 
-    		return 0;
+			char regionChar= Character.toLowerCase(postalCode.charAt(2));
+			int asciiValue= (int)regionChar;
+			int value= asciiValue-96;
+			return value;
     	}
     	public int getRegionHorizontalIndex()
     	{
-    		//ToDo: add your code here (you can update the return statement) 
-    		return 0;
+    		int value = Character.getNumericValue(postalCode.charAt(4));
+    		return value;
     	}
     	public String getPostalCode()
     	{
-    		//ToDo: add your code here (you can update the return statement) 
-    		return "";
+    		
+    		return postalCode;
     	}
 }
