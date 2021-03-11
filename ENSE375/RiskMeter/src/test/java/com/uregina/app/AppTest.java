@@ -58,12 +58,12 @@ public class AppTest
     }
 
 
-    @Test
-    public void addAptient()
-    {
-        App app =  new App();
-        PostalCode pc = new PostalCode("K1T-5X2")
+    // @Test
+    // public void addPatient()
+    // {
+    //     App app =  new App();
+    //     PostalCode pc = new PostalCode("K1T-5X2");
 
-        app.addPatient("STeve", "123456780", patientpostalCode, patientAge)
-    }
+    //     app.addPatient("STeve", "123456780", patientpostalCode, patientAge)
+    // }
  }
