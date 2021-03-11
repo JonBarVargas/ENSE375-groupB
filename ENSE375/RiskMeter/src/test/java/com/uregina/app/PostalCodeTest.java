@@ -90,4 +90,11 @@ public class PostalCodeTest
        
         assertFalse(PostalCode.isValidPostalCode("K1t-5xf"));
     }
+
+
+    @Test
+    public void isValidPostCode_WrongPrefix_False(){
+       
+        assertFalse(PostalCode.isValidPostalCode("T2t-5xf"));
+    }
 }
