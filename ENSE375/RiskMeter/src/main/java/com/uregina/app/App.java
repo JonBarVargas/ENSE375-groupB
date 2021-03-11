@@ -189,7 +189,7 @@ public class App
     * @param patientAge 	an integer contains the age of the patient that should be added
     * @return boolean which is false if it failed
     */
-    public boolean addPatient(String patientName,String patientID,String patientpostalCode, int patientAge)
+	public boolean addPatient(String patientName,String patientID,String patientpostalCode, int patientAge)
     {
     	PostalCode postalCode=null;
     	try{
@@ -202,6 +202,7 @@ public class App
     	try{
     		patient= new Patient(patientName, patientID, patientAge,postalCode);
     	}
+		
     	catch(InvalidNameException e){
     		System.out.println( "\tInvalid patient name" );
     		return false;
@@ -215,7 +216,7 @@ public class App
     		return true;
     	}
     	catch(InvalidPostalCodeException e){
-    		System.out.println( "\tInvalid patient ID" );
+    		System.out.println( "\tInvalid patient Postal Code" );
     		return false;
     	}
 
