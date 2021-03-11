@@ -1,4 +1,6 @@
 package com.uregina.app;
+//import javax.naming.InvalidNameException;
+
 import com.uregina.exception.*;
 
 
@@ -9,29 +11,48 @@ public class Patient
 	private int age;
 	private PostalCode postalCode;
 	
-	public Patient(String name, String ID, int age, PostalCode postalCode) throws InvalidNameException, InvalidAgeException ,InvalidIDException, InvalidPostalCodeException
+	public Patient(String name, String ID, int age, PostalCode postalCode) throws InvalidAgeException ,InvalidIDException, InvalidPostalCodeException, InvalidNameException
 	{
-		//ToDo: add you code here
+		if(name.matches("^[a-zA-Z .]*$")){
+			this.name = name;
+		} else{
+			throw new InvalidNameException(name);
+		}
+		if(age >= 0){
+			this.age = age;
+		} else{
+			throw new InvalidAgeException(age);
+		}
+		if(ID.matches("(?=.*0)^[0-9]{9}$")){
+			this.ID = ID;
+
+		} else{
+			throw new InvalidIDException(ID);
+		}
+		if(PostalCode.isValidPostalCode(postalCode.getPostalCode())){
+			this.postalCode = postalCode;
+		} else{
+			throw new InvalidPostalCodeException();
+		}
+
+
+
 	}
 	public String getName()
 	{
-		//ToDo: add your code here (you can update the return statement)
-		return "";
+		return name;
 	}
 	public String getID()
 	{
-		//ToDo: add your code here (you can update the return statement) 
-		return "";
+		return ID;
 	}
 	public int getAge()
 	{
-		//ToDo: add your code here (you can update the return statement) 
-		return 0;
+		return age;
 	}
 	public PostalCode getPostalCode()
 	{	
-		//ToDo: add your code here (you can update the return statement)
-		return null;
+		return postalCode;
 	}
 	/**
 	*
@@ -39,8 +60,12 @@ public class Patient
 	*/
 	public boolean setAge(int age)
 	{	
-		//ToDo: add your code here
-		return true;
+		if(age < 0){
+			this.age = age;
+			return true;
+		} else{
+			return false;
+		}
 	}
 	/**
 	*
@@ -48,7 +73,11 @@ public class Patient
 	*/
 	public boolean setPostalCode(PostalCode postalCode)
 	{
-		//ToDo: add your code here
-		return true;
+		if(PostalCode.isValidPostalCode(postalCode.getPostalCode())){
+			this.postalCode = postalCode;
+			return true;
+		} else{
+			return false;
+		}
 	}
 }
