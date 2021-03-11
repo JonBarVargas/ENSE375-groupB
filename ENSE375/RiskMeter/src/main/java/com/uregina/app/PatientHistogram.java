@@ -43,8 +43,8 @@ public class PatientHistogram
     	}
     	public int getPatientsCountInRegion(int VIndex,int HIndex) throws IndexOutOfBoundsException
     	{
-			if( VIndex < Y_MAX && VIndex >= 0 &&
-				HIndex < X_MAX && HIndex >= 0){
+			if( !(VIndex < Y_MAX && VIndex >= 0 &&
+				HIndex < X_MAX && HIndex >= 0)){
 					throw new IndexOutOfBoundsException();
 				}
     		return patientCount[HIndex][VIndex];	
