@@ -20,7 +20,7 @@ public class PostalCode
     	{
 			char regionChar= Character.toLowerCase(postalCode.charAt(2));
 			int asciiValue= (int)regionChar;
-			int value= asciiValue-96;
+			int value= asciiValue-97;
 			return value;
     	}
     	public int getRegionHorizontalIndex()
