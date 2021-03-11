@@ -7,7 +7,7 @@ public class PatientList
 	private ArrayList<Patient> patientList;
     	public PatientList() 
     	{
-    		//ToDo: add you code here
+    		patientList = new ArrayList<Patient>();
     	}
     	/**
 	*
@@ -15,7 +15,13 @@ public class PatientList
 	*/
     	public boolean addPatient(Patient patient)
     	{
-    		//ToDo: add you code here
+    		try
+			{
+				patientList.add(patient);
+			}catch(Exception e)
+			{
+				return false;
+			}
     		return true;
     	}
     	/**
@@ -24,17 +30,26 @@ public class PatientList
 	*/
     	public boolean deletePatient(int index)
     	{
-    		//ToDo: add you code here
+			try
+			{
+				patientList.remove(index);
+			}catch(IndexOutOfBoundsException e)
+			{ 
+				return false;
+			}
     		return true;
     	}
     	public Patient getPatient(String ID)
     	{
-    		//ToDo: add you code here
-    		return null;
+			for (Patient patient : patientList) {
+				if (patient.getID().equals(ID)) {
+					return patient;
+				}
+			}
+			return null;
     	}
     	public int getNumberofPatients()
     	{
-    		//ToDo: add you code here (you can update the return statement)
-    		return 0;
+    		return patientList.size();
     	}
 }

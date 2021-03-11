@@ -1,6 +1,6 @@
 package com.uregina.app;
 
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 
 import org.junit.Test;
 
@@ -9,12 +9,12 @@ import org.junit.Test;
  */
 public class PatientHistogramTest
 {
-    /**
-     * Rigorous Test :-)
-     */
+  
+
+
     @Test
-    public void shouldAnswerWithTrue()
-    {
-        assertTrue( true );
+    void addPatientToARegion_Valid_True(){
+        PatientHistogram histo = new PatientHistogram();
     }
+
 }

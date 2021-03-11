@@ -4,10 +4,14 @@ import java.util.ArrayList;
 
 public class PatientHistogram 
 {
+
+	final int Y_MAX = 20;
+	final int X_MAX = 10;
+
 	private int[][] patientCount;
     	public PatientHistogram() 
     	{
-    		//ToDo: add you code here
+    		patientCount = new int[X_MAX][Y_MAX];
     	}
     	/**
 	*
@@ -15,9 +19,12 @@ public class PatientHistogram
 	*/
     	public boolean addAPatientToRegion(int VIndex,int HIndex)
     	{
-    		//ToDo: add you code here
-    		
-    		return true;
+    		if( VIndex < Y_MAX && VIndex >= 0 &&
+				HIndex < X_MAX && HIndex >= 0){
+					patientCount[HIndex][VIndex]++;
+					return true;
+				}
+    		return false;	
     	}
 	/**
 	*
@@ -25,13 +32,21 @@ public class PatientHistogram
 	*/
     	public boolean deleteAPatientFromRegion(int VIndex,int HIndex)
     	{
-    		//ToDo: add you code here 
+    		if( VIndex < Y_MAX && VIndex >= 0 &&
+				HIndex < X_MAX && HIndex >= 0 && 
+				patientCount[HIndex][VIndex] > 0){
+					patientCount[HIndex][VIndex]--;
+					return true;
+				}
     		
-    		return true;
+    		return false;
     	}
     	public int getPatientsCountInRegion(int VIndex,int HIndex) throws IndexOutOfBoundsException
     	{
-    		//ToDo: add you code here (you can update the return statement)
-    		return 0;
+			if( VIndex < Y_MAX && VIndex >= 0 &&
+				HIndex < X_MAX && HIndex >= 0){
+					throw new IndexOutOfBoundsException();
+				}
+    		return patientCount[HIndex][VIndex];	
     	}
 }

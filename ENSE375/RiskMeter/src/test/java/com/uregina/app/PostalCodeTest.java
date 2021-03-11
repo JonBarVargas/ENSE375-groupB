@@ -3,7 +3,6 @@ package com.uregina.app;
 import static org.junit.Assert.*;
 import org.junit.Test;
 
-import jdk.jfr.Timestamp;
 
 /**
  * Unit test for simple PostalCode.
@@ -31,7 +30,7 @@ public class PostalCodeTest
         }catch(Exception e){
 
         }
-        assertEquals(2,pc.getRegionVerticalIndex());
+        assertEquals(1,pc.getRegionVerticalIndex());
     }
 
     @Test
