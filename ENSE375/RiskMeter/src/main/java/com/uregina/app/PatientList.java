@@ -1,5 +1,5 @@
 package com.uregina.app;
-import com.uregina.exception.*;
+// import com.uregina.exception.*;
 import java.util.ArrayList;
 
 public class PatientList 
@@ -15,6 +15,7 @@ public class PatientList
 	*/
     	public boolean addPatient(Patient patient)
     	{
+			if(patient == null) return false;
     		try
 			{
 				patientList.add(patient);
