@@ -1,6 +1,6 @@
 package com.uregina.app;
 
-import com.uregina.exception.*;
+// import com.uregina.exception.*;
 import java.util.*;
 
 public class RiskCodeMap {
@@ -11,6 +11,11 @@ public class RiskCodeMap {
 
 	public RiskCodeMap() {
 		riskCode = new char[X_MAX][Y_MAX];
+		for(int i=0;i<20;i++){
+			for(int j=0;j<10;j++){
+				riskCode[j][i] = 'G';
+			}
+		}
 	}
 
 	/**
