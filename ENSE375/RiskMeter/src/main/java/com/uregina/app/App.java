@@ -52,6 +52,7 @@ public class App
 				patientID=myInput.nextLine();
 				patientpostalCode=myInput.nextLine();
 				patientAge=myInput.nextInt();
+				myInput.nextLine();//gets rid of newline from nextInt
 				if(app.addPatient(patientName,patientID,patientpostalCode,patientAge))
 				{
 	 			   	System.out.println("\tPatient has been added successfully");				
@@ -72,13 +73,13 @@ public class App
 				  	System.out.println("\tPatient failed to be removed");
 				}
 			case 3:
-				System.out.print("\t");
+				System.out.print(" ");
 				for(int j=0;j<10;j++){
-					System.out.print("  "+j);
+					System.out.print("  " + j);
 				}
 				System.out.println("");
 				for(int i=0;i<20;i++){
-					System.out.print('A'+i);
+					System.out.print((char)('A'+i));
 					for(int j=0;j<10;j++){
 						System.out.print("  "+app.riskCodeMap.getRiskInARegion(i,j));	
 					}
@@ -149,6 +150,7 @@ public class App
     	if(patient==null)
     	{
     		System.out.println( "\tPatient Not Found" );
+			return false;
     	}
     	int HIndex=patient.getPostalCode().getRegionHorizontalIndex();
     	int VIndex=patient.getPostalCode().getRegionVerticalIndex();
@@ -213,7 +215,7 @@ public class App
     	}
     	catch(InvalidIDException e){
     		System.out.println( "\tInvalid patient ID" );
-    		return true;
+    		return false;
     	}
     	catch(InvalidPostalCodeException e){
     		System.out.println( "\tInvalid patient Postal Code" );
