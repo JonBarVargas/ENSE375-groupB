@@ -1,9 +1,5 @@
 pipeline {
     agent {
-        node {
-            label 'RiskMeter'
-            customWorkspace '/ENSE375/RiskMeter'
-        }
         docker {
             image 'maven:3-alpine'
             args '-v /root/.m2:/root/.m2'
