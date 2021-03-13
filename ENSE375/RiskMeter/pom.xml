@@ -11,12 +11,6 @@
     <name>ENSE375-groupB</name>
     <description>Project Step 3 - Continuous Integration - RiskMeter</description>
 
-    <!-- <properties>
-		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<maven.compiler.source>1.8</maven.compiler.source>
-		<maven.compiler.target>${maven.compiler.source}</maven.compiler.target>
-	</properties> -->
-
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<maven.compiler.source>1.8</maven.compiler.source>
@@ -29,8 +23,7 @@
                 <groupId>org.junit</groupId>
                 <artifactId>junit-bom</artifactId>
                 <version>5.7.1</version>
-                <type>pom</type>
-                <scope>import</scope>
+                <scope>test</scope>
             </dependency>
 		</dependencies>
 	</dependencyManagement>
