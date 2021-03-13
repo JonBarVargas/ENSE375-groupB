@@ -2,7 +2,7 @@ package com.uregina.app;
 
 import static org.junit.Assert.*;
 
-//import org.junit.*;
+import org.junit.*;
 import java.io.*;
 
 /**
