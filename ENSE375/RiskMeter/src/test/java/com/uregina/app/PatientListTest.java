@@ -1,3 +1,4 @@
+//Karlee Fidek
 package com.uregina.app;
 
 import static org.junit.Assert.*;
@@ -15,6 +16,11 @@ public class PatientListTest {
          patientList = new PatientList();
     }
 
+    @Test
+    public void test_test(){
+        fail();
+    }
+    
     @Test
     public void makePatientList_True() {
         
