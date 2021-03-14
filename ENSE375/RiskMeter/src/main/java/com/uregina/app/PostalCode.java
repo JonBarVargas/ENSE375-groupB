@@ -1,6 +1,7 @@
 package com.uregina.app;
 import com.uregina.exception.*;
-
+//Implemented by Tristan Brown-Hannibal
+//200400651
 public class PostalCode 
 {
 	private String postalCode;
