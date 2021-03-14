@@ -11,31 +11,23 @@ import org.junit.Test;
  */
 public class PatientListTest {
     private PatientList patientList;
+    
     @Before
     public void setUp(){
          patientList = new PatientList();
     }
     
     @Test
-    public void makePatientList_True() {
-        
-        if (patientList.getNumberofPatients() != 0) {
-            fail();
-        }
+    public void newPatientListEmpty_True() {
+        assertEqual(patientList.getNumberofPatients(), 0);
     }
 
    @Test
    public void addPatient_ValidPatient_True(){
-        Patient patient = null;
-        try{
-             patient = new Patient("Joe", "123123120", 33, new PostalCode("K1T-5X2"));
-        }
-        catch (Exception e){
-           System.out.println("error making patient");
-        }
+        Patient patient = createPatient();
+       
         assertTrue(patientList.addPatient(patient));
     }
-
 
     @Test
     public void addPatient_Null_False(){
@@ -46,13 +38,9 @@ public class PatientListTest {
      @Test
      public void deletePatient_ValidPatient_True(){
         Patient patient = null;
-        try{
-             patient = new Patient("Joe", "123123120", 33, new PostalCode("K1T-5X2"));
-        }
-        catch (Exception e){
-           System.out.println("error making patient");
-        }
+        patient = createPatient();
         patientList.addPatient(patient);
+         
         assertTrue(patientList.deletePatient(0));
      }
 
@@ -63,23 +51,25 @@ public class PatientListTest {
 
      @Test
      public void getPatient_Valid(){
-        Patient patient = null;
-        try{
-            patient = new Patient("Joe", "123123120", 33, new PostalCode("K1T-5X2"));
-       }
-       catch (Exception e){
-          System.out.println("error making patient");
-       }
-       patientList.addPatient(patient);
+        Patient patient = createPatient();
+        patientList.addPatient(patient);
 
-       assertTrue(patientList.getPatient("123123120") == patient);
-
+        assertEquals(patientList.getPatient("123123120"), patient);
      }
-
 
      @Test
      public void getPatient_Null(){
         Patient patient = patientList.getPatient("123123120");
         assertTrue(patient == null);
      }
+    
+    private Patient createPatient() {
+       try{
+            Patient patient = new Patient("Joe", "123123120", 33, new PostalCode("K1T-5X2"));
+            return patient;
+       }
+       catch (Exception e){
+          System.out.println("error making patient");
+       }
+    }
 }
