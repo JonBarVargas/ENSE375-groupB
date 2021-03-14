@@ -13,7 +13,7 @@ public class RiskCodeMap {
 		riskCode = new char[X_MAX][Y_MAX];
 		for(int i=0;i<20;i++){
 			for(int j=0;j<10;j++){
-				riskCode[j][i] = 'G';
+				this.riskCode[j][i] = 'G';
 			}
 		}
 	}
@@ -34,7 +34,7 @@ public class RiskCodeMap {
 			} else {
 				median = neighboursCaseCount.get(mid);
 			}
-			riskCode[HIndex][VIndex] = calculateRisk(Math.max(median,caseCount));
+			this.riskCode[HIndex][VIndex] = calculateRisk(Math.max(median,caseCount));
 			return true;
 
 		}
@@ -55,9 +55,9 @@ public class RiskCodeMap {
 
 	public char calculateRisk(int caseCount){
 		if (caseCount > 10 ) return 'R';
-		if (caseCount > 7 && caseCount <= 10) return 'O';
-		if (caseCount > 3 && caseCount <= 7) return 'Y';
-		if (caseCount > 0 && caseCount <= 3) return 'B';
+		if (caseCount >= 7 && caseCount < 10) return 'O';
+		if (caseCount >= 3 && caseCount < 7) return 'Y';
+		if (caseCount >= 0 && caseCount < 3) return 'B';
 		return 'G';
 
 
