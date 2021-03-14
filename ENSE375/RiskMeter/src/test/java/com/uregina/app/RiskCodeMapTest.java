@@ -42,16 +42,76 @@ public class RiskCodeMapTest
     }
 
     @Test
-    public void update_Risks_Ideal_input()
+    public void update_Risks()
     {
         int VIndex = 0; 
-        int HIndex = 2;
-        RiskCodeMap risk = new RiskCodeMap();
+        int HIndex = 1;
         ArrayList cases = new ArrayList();
         cases.add(2);
         cases.add(3);
         cases.add(4);
        
-        assertTrue( risk.updateRiskInARegion(VIndex, HIndex, 3, cases));
+        assertTrue( testRiskMap.updateRiskInARegion(VIndex, HIndex, 3, cases));
+    }
+
+    @Test
+    public void test_B()
+    {
+        boolean correctCode = false;
+        ArrayList cases = new ArrayList();
+        cases.add(0);
+        cases.add(1);
+        cases.add(2);
+        boolean aux = testRiskMap.updateRiskInARegion(VTestCoordinate, HTestCoordinate, 1, cases);
+
+        if(testRiskMap.getRiskInARegion(VTestCoordinate, HTestCoordinate) == 'B')
+            correctCode = true;
+
+        assertTrue(correctCode);
+    }
+    @Test
+    public void test_Y()
+    {
+        boolean correctCode = false;
+        ArrayList cases = new ArrayList();
+        cases.add(3);
+        cases.add(4);
+        cases.add(5);
+        boolean aux = testRiskMap.updateRiskInARegion(VTestCoordinate, HTestCoordinate, 1, cases);
+
+        if(testRiskMap.getRiskInARegion(VTestCoordinate, HTestCoordinate) == 'Y')
+            correctCode = true;
+
+        assertTrue(correctCode);
+    }
+    @Test
+    public void test_O()
+    {
+        boolean correctCode = false;
+        ArrayList cases = new ArrayList();
+        cases.add(3);
+        cases.add(4);
+        cases.add(5);
+        boolean aux = testRiskMap.updateRiskInARegion(VTestCoordinate, HTestCoordinate, 7, cases);
+
+        if(testRiskMap.getRiskInARegion(VTestCoordinate, HTestCoordinate) == 'Y')
+            correctCode = true;
+
+        assertTrue(correctCode);
+    }
+    @Test
+    public void test_R()
+    {
+        boolean correctCode = false;
+        ArrayList cases = new ArrayList();
+        cases.add(3);
+        cases.add(4);
+        cases.add(5);
+        boolean aux = testRiskMap.updateRiskInARegion(VTestCoordinate, HTestCoordinate, 10, cases);
+
+        if(testRiskMap.getRiskInARegion(VTestCoordinate, HTestCoordinate) == 'R')
+            correctCode = true;
+
+        assertTrue(correctCode);
     }
 }
