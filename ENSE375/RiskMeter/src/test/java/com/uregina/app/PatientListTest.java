@@ -19,7 +19,7 @@ public class PatientListTest {
     
     @Test
     public void newPatientListEmpty_True() {
-        assertEqual(patientList.getNumberofPatients(), 0);
+        assertEquals(patientList.getNumberofPatients(), 0);
     }
 
    @Test
