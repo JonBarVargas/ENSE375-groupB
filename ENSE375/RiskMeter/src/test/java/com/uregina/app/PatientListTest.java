@@ -15,11 +15,6 @@ public class PatientListTest {
     public void setUp(){
          patientList = new PatientList();
     }
-
-    @Test
-    public void test_test(){
-        fail();
-    }
     
     @Test
     public void makePatientList_True() {
