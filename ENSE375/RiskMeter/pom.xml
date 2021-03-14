@@ -78,11 +78,4 @@
             </plugins>
     	</pluginManagement>
     </build>
-    <distributionManagement>
-    	<repository>
-      	    <id>github</id>
-      	    <name>ENSE375-groupBs</name>
-      	    <url>https://github.com/JonBarVargas/ENSE375-groupB</url>
-    	</repository>
-    </distributionManagement>
 </project>
