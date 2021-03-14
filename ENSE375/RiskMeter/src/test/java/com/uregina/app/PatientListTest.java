@@ -64,8 +64,9 @@ public class PatientListTest {
      }
     
     private Patient createPatient() {
+       Patient patient = null;
        try{
-            Patient patient = new Patient("Joe", "123123120", 33, new PostalCode("K1T-5X2"));
+            patient = new Patient("Joe", "123123120", 33, new PostalCode("K1T-5X2"));
        }
        catch (Exception e){
           System.out.println("error making patient");
