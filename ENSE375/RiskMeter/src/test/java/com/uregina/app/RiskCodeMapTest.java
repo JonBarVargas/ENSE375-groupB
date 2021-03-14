@@ -3,6 +3,7 @@ package com.uregina.app;
 import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
+import org.junit.Before;
 
 import jdk.jfr.Timestamp;
 
@@ -13,6 +14,15 @@ import java.util.*;
  */
 public class RiskCodeMapTest 
 {
+    private RiskCodeMap testRiskMap;
+    private int VTestCoordinate;
+    private int HTestCoordinate;
+    @Before
+    public void setUp(){
+        testRiskMap = new RiskCodeMap();
+        VTestCoordinate = 0;
+        HTestCoordinate = 2;
+    }
     /**
      * Rigorous Test :-)
      */
@@ -26,8 +36,7 @@ public class RiskCodeMapTest
     public void return_Risk_In_A_Region()
     {   
         boolean correctCode = false;
-        RiskCodeMap risk = new RiskCodeMap();
-        if(risk.getRiskInARegion(0, 2) == 'G')
+        if(testRiskMap.getRiskInARegion(VTestCoordinate, HTestCoordinate) == 'G')
             correctCode = true;
         assertTrue(correctCode);
     }
