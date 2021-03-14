@@ -3,15 +3,14 @@ package com.uregina.app;
 import static org.junit.Assert.*;
 import org.junit.Test;
 
-
+//Implemented by Tristan Brown-Hannibal
+//200400651
 /**
  * Unit test for simple PostalCode.
  */
 public class PostalCodeTest 
 {
-    /**
-     * Rigorous Test :-)
-     */
+ 
  
 
     @Test
