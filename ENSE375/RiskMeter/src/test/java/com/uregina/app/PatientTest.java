@@ -7,8 +7,6 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 
 
-//Some assumptions
-//We assumed that 
 
 public class PatientTest {
 
