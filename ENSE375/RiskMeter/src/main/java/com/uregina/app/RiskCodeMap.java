@@ -54,7 +54,7 @@ public class RiskCodeMap {
 
 
 	public char calculateRisk(int caseCount){
-		if (caseCount > 10 ) return 'R';
+		if (caseCount >= 10 ) return 'R';
 		if (caseCount >= 7 && caseCount < 10) return 'O';
 		if (caseCount >= 3 && caseCount < 7) return 'Y';
 		if (caseCount >= 0 && caseCount < 3) return 'B';
