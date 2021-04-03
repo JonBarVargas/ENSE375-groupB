@@ -8,3 +8,11 @@ Team members:
 - Karlee Fidek
 - Qurrat Ulain
 - Jonathan Vargas
+
+Project Step 4 - April 5, 2021
+1. addPatient test class (version 1): Karlee Fidek
+2. addPatient test class (version 2):
+3. addPatient method corrections:
+4. deletePatient test class:
+5. deletePatient method corrections:
+
