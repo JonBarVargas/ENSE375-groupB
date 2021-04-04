@@ -45,46 +45,19 @@ public class App {
 	 */
 	public static void main(String[] args) {
 		App app = new App();
-		Scanner myInput = new Scanner(System.in);
 		boolean stop = false;
-		String patientName, patientID, patientpostalCode;
-		int patientAge;
 		while (!stop) {
 			showMenu();
 			int choice = getAChoice();
 			switch (choice) {
 			case 1:
-				patientName = myInput.nextLine();
-				patientID = myInput.nextLine();
-				patientpostalCode = myInput.nextLine();
-				patientAge = myInput.nextInt();
-				myInput.nextLine();// gets rid of newline from nextInt
-				if (app.addPatient(patientName, patientID, patientpostalCode, patientAge)) {
-					System.out.println("\tPatient has been added successfully");
-				} else {
-					System.out.println("\tPatient failed to be added");
-				}
+				addPatientOption(app);
 				break;
 			case 2:
-				patientID = myInput.nextLine();
-				if (app.deletePatient(patientID)) {
-					System.out.println("\tPatient has been removed successfully");
-				} else {
-					System.out.println("\tPatient failed to be removed");
-				}
+				removePatientOption(app);
+				break;
 			case 3:
-				System.out.print(" ");
-				for (int j = 0; j < 10; j++) {
-					System.out.print("  " + j);
-				}
-				System.out.println("");
-				for (int i = 0; i < 20; i++) {
-					System.out.print((char) ('A' + i));
-					for (int j = 0; j < 10; j++) {
-						System.out.print("  " + app.riskCodeMap.getRiskInARegion(i, j));
-					}
-					System.out.println("");
-				}
+				printMapOption(app);
 				break;
 			case 4:
 				stop = true;
@@ -314,6 +287,53 @@ public class App {
 			return false;
 		}
 		return true;
+	}
+
+
+
+	public static void addPatientOption(App app){
+		Scanner myInput = new Scanner(System.in);
+		String patientName, patientID, patientpostalCode;
+		int patientAge;
+		patientName = myInput.nextLine();
+		patientID = myInput.nextLine();
+		patientpostalCode = myInput.nextLine();
+		patientAge = myInput.nextInt();
+		myInput.nextLine();// gets rid of newline from nextInt
+		if (app.addPatient(patientName, patientID, patientpostalCode, patientAge)) {
+			System.out.println("\tPatient has been added successfully");
+		} else {
+			System.out.println("\tPatient failed to be added");
+		}
+	}
+
+	public static void removePatientOption(App app){
+		Scanner myInput = new Scanner(System.in);
+		String patientID;
+		patientID = myInput.nextLine();
+		if (app.deletePatient(patientID)) {
+			System.out.println("\tPatient has been removed successfully");
+		} else {
+			System.out.println("\tPatient failed to be removed");
+		}
+
+	}
+
+
+	public static void printMapOption(App app){
+		System.out.print(" ");
+				for (int j = 0; j < 10; j++) {
+					System.out.print("  " + j);
+				}
+				System.out.println("");
+				for (int i = 0; i < 20; i++) {
+					System.out.print((char) ('A' + i));
+					for (int j = 0; j < 10; j++) {
+						System.out.print("  " + app.riskCodeMap.getRiskInARegion(i, j));
+					}
+					System.out.println("");
+				}
+
 	}
 
 }
