@@ -12,7 +12,7 @@ public class AppAddPatientTest {
 	
 	@Test
 	public void addPatient_validPatient_true() {
-		boolean addSuccessful = app.addPatient("Karlee", "123456780", "K1A-2F7", 21);
+		boolean addSuccessful = app.addPatient("Karlee", "112233445", "K1A-2F7", 21);
 		assertTrue(addSuccessful);
 	}
 	
@@ -24,7 +24,7 @@ public class AppAddPatientTest {
 	
 	@Test
 	public void addPatient_invalidAge_false() {
-		boolean addSuccessful = app.addPatient("Karlee", "123456780", "K1A-2F7", -1);
+		boolean addSuccessful = app.addPatient("Karlee", "112233445", "K1A-2F7", -1);
 		assertFalse(addSuccessful);
 	}
 	
@@ -36,14 +36,14 @@ public class AppAddPatientTest {
 	
 	@Test
 	public void addPatient_invalidName_false() {
-		boolean addSuccessful = app.addPatient("Karlee&Fidek", "123456780", "K1A-2F7", 21);
+		boolean addSuccessful = app.addPatient("Karlee&Fidek", "112233445", "K1A-2F7", 21);
 		assertFalse(addSuccessful);
 	}
 	
 	@Test
 	public void addPatient_RiskMap_false() {
-		app.addPatient("Karlee", "123456780", "K1A-2F7", 21);
-		boolean addSuccessful = app.addPatient("Dr. ElDarieby", "213456780", "K1A-2F7", 40);
+		app.addPatient("Karlee", "112233445", "K1A-2F7", 21);
+		boolean addSuccessful = app.addPatient("Dr. ElDarieby", "213456789", "K1A-2F7", 40);
 		assertFalse(addSuccessful);
 	}
 }
