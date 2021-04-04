@@ -237,11 +237,24 @@ public class App
     	int caseCount=histogram.getPatientsCountInRegion(VIndex,HIndex);
     	ArrayList<Integer> neighboursCaseCount= new ArrayList<Integer> ();
     	for (int i=-1;i<=1;i+=2){
-    		neighboursCaseCount.add(histogram.getPatientsCountInRegion(VIndex+i,HIndex));
+    		if (i == 1 && VIndex == 84) {	
+			neighboursCaseCount.add(histogram.getPatientsCountInRegion(65,HIndex));
+		} else if (i == -1 && VIndex == 65) {
+			neighboursCaseCount.add(histogram.getPatientsCountInRegion(84, HIndex));
+		} else {
+			neighboursCaseCount.add(histogram.getPatientsCountInRegion(VIndex + 1, HIndex));
+		}
     	}
     	for (int i=-1;i<=1;i+=2){
-    		neighboursCaseCount.add(histogram.getPatientsCountInRegion(VIndex,HIndex+i));
-    	}
+    		if (i == -1 && HIndex == 0) {
+			neighboursCaseCount.add(histogram.getPatientsCountInRegion(VIndex, 9));
+		} else if (i == 1 && HIndex == 9) {
+			neighboursCaseCount.add(histogram.getPatientsCountInRegion(VIndex, 0));
+		} else {
+			neighboursCaseCount.add(histogram.getPatientsCountInRegion(VIndex, HIndex));
+		}
+	}
+
     	if(!riskCodeMap.updateRiskInARegion(VIndex,HIndex,caseCount,neighboursCaseCount))
     	{
     		System.out.println( "\tFailed to update the risk code map" );
