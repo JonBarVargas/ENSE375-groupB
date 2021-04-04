@@ -273,7 +273,7 @@ public class App {
 		ArrayList<Integer> neighboursCaseCount = new ArrayList<Integer>();
 		for (int horizontal = -1; horizontal <= 1; horizontal++) {
 			for (int vertical = -1; vertical <= 1; vertical++) {
-				if ((vertical == 0 && horizontal == 0) && VIndex + vertical < 20 && VIndex + vertical >= 0
+				if (!(vertical == 0 && horizontal == 0) && VIndex + vertical < 20 && VIndex + vertical >= 0
 						&& HIndex + horizontal < 10 && HIndex + horizontal >= 0) {
 					neighboursCaseCount.add(histogram.getPatientsCountInRegion(VIndex + vertical, HIndex + horizontal));
 
