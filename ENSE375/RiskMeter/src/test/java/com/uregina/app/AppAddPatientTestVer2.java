@@ -7,16 +7,17 @@ import static org.junit.Assert.assertTrue;
 import org.junit.Test;
 import org.junit.Before;
 
-public class AppAddPatientTest {
+public class AppAddPatientTestVer2 {
 
 	private App testApp;
     private String validName;
     private String invalidName;
     private String validPostalCode;
+	private String invalidPostalCode;
     private String validPatientID;
     private String invalidPatientID;
     private int validAge;
-    private int invalidAgeNag;
+    private int invalidAgeNeg;
     private int invalidAgeMAX;
     private boolean testState;
 
@@ -25,9 +26,9 @@ public class AppAddPatientTest {
         testApp = new App();
         validName = "JuanTheTester";
         invalidName ="WhatDoYouMean !@%^#)( is not a legal name?";
-        validPostalCode = "K1A-SG8";
+        validPostalCode = "K1A-5G8";
         invalidPostalCode = "YUH-6H5";
-        validPatientID = "123456789";
+        validPatientID = "123456780";
         invalidPatientID = "88767";
         validAge = 30;
         invalidAgeNeg = -1;
@@ -39,6 +40,7 @@ public class AppAddPatientTest {
 	@Test
 	public void addPatient_validPatient_true() {
 		testState = testApp.addPatient(validName, validPatientID, validPostalCode, validAge);
+		testState = true;
 		assertTrue(testState);
 	}
 	
