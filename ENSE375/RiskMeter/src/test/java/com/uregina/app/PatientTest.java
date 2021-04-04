@@ -30,7 +30,7 @@ public class PatientTest {
     @Test(expected = InvalidIDException.class)
     public void constructPatient_InvalidID_Throws() throws Exception {
 
-        Patient patient = new Patient("Joe", "000123120", 33, new PostalCode("K1T-5X2"));
+        Patient patient = new Patient("Joe", "000000000", 33, new PostalCode("K1T-5X2"));
     }
 
     @Test(expected = InvalidAgeException.class)
