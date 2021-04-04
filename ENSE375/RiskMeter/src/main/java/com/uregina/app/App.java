@@ -253,8 +253,6 @@ public class App {
     		System.out.println( "\tFailed to assign  a patient to a region" );
     		return false;
     	}
-    	//int caseCount=histogram.getPatientsCountInRegion(VIndex,HIndex);
-    	ArrayList<Integer> neighboursCaseCount= new ArrayList<Integer> ();
 
 
 
@@ -292,7 +290,7 @@ public boolean updateNeighbours(int VIndex,int HIndex){
 	for(int horizontal = -1; horizontal <= 1; horizontal++){
 		for(int vertical = -1; vertical <= 1; vertical++){
 			if(
-				!(vertical == 0 && horizontal == 0) &&
+				(vertical == 0 && horizontal == 0) &&
 				VIndex + vertical < 20 &&
 				VIndex + vertical >= 0 &&
 				HIndex + horizontal < 10 &&
