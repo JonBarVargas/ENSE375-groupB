@@ -24,7 +24,7 @@ public class Patient
 		} else{
 			throw new InvalidAgeException(age);
 		}
-		if(ID.matches("[0-9]{9}")){
+		if(ID.matches("^([0-9]{9})$")){
 			this.ID = ID;
 
 		} else{
