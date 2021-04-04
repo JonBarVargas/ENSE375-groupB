@@ -26,7 +26,7 @@ public class App {
 		patientList = new PatientList();
 		histogram = new PatientHistogram();
 		riskCodeMap = new RiskCodeMap();
-	
+
 	}
 
 	/**
@@ -123,7 +123,7 @@ public class App {
 	 * @return int the value choices by the user from 1 to 4 or 0 for a bad choice
 	 */
 	public static int getAChoice() {
-		Scanner myInput = new Scanner( System.in );
+		Scanner myInput = new Scanner(System.in);
 		System.out.print("Enter a number from 1 to 4: ");
 		int choice;
 		try {
@@ -191,116 +191,129 @@ public class App {
 	}
 
 	/**
-    * <p>This method adds a patient to the patient list 
-    * and update the patient histogram and risk map</p>
-    * <p>The function prints tyhe following messages in case of fail</p>
-    * <pre>"\tInvalid PostalCode"           	        if the patient postal code is invalid </pre>
-    * <pre>"\tInvalid patient name"			if the patient name is invalid</pre>
-    * <pre>"\tInvalid patient age"				if the patient age is invalid </pre>
-    * <pre>"\tInvalid patient ID"				if the patient ID is invalid </pre>
-    * <pre>"\tFailed to add a patient to a patientList"	if the patient can't be added to the patient list </pre>
-    * <pre>"\tFailed to assign  a patient to a region"	if the function failed to update the histogram </pre> 
-    * <pre>"\tFailed to update the risk code map"		if the function failed to update the risk map </pre>
-    * The function stops if any failure occurs 
-    * @param patientName 	a string contains the name of the patient that should be added
-    * @param patientID 	a string contains the ID of the patient that should b  added
-    * @param patientpostalCode a string contains the postal code of the patient that should be added
-    * @param patientAge 	an integer contains the age of the patient that should be added
-    * @return boolean which is false if it failed
-    */
-	public boolean addPatient(String patientName,String patientID,String patientpostalCode, int patientAge)
-    {
-    	PostalCode postalCode=null;
-    	try{
-    		postalCode=new PostalCode(patientpostalCode);
-    	}
-    	catch(InvalidPostalCodeException e){
-    		System.out.println( "\tInvalid PostalCode" );
-		return false;
-	}
-    	Patient patient=null;
-    	try{
-    		patient= new Patient(patientName, patientID, patientAge,postalCode);
-    	}
-		
-    	catch(InvalidNameException e){
-    		System.out.println( "\tInvalid patient name" );
-    		return false;
-    	}
-    	catch(InvalidAgeException e){
-    		System.out.println( "\tInvalid patient age" );
-    		return false;
-    	}
-    	catch(InvalidIDException e){
-    		System.out.println( "\tInvalid patient ID" );
-    		return false;
-    	}
-    	catch(InvalidPostalCodeException e){
-    		System.out.println( "\tInvalid patient Postal Code" );
-    		return false;
-    	}
+	 * <p>
+	 * This method adds a patient to the patient list and update the patient
+	 * histogram and risk map
+	 * </p>
+	 * <p>
+	 * The function prints tyhe following messages in case of fail
+	 * </p>
+	 * 
+	 * <pre>
+	 * "\tInvalid PostalCode"           	        if the patient postal code is invalid
+	 * </pre>
+	 * 
+	 * <pre>
+	 * "\tInvalid patient name"			if the patient name is invalid
+	 * </pre>
+	 * 
+	 * <pre>
+	 * "\tInvalid patient age"				if the patient age is invalid
+	 * </pre>
+	 * 
+	 * <pre>
+	 * "\tInvalid patient ID"				if the patient ID is invalid
+	 * </pre>
+	 * 
+	 * <pre>
+	 * "\tFailed to add a patient to a patientList"	if the patient can't be added to the patient list
+	 * </pre>
+	 * 
+	 * <pre>
+	 * "\tFailed to assign  a patient to a region"	if the function failed to update the histogram
+	 * </pre>
+	 * 
+	 * <pre>
+	 * "\tFailed to update the risk code map"		if the function failed to update the risk map
+	 * </pre>
+	 * 
+	 * The function stops if any failure occurs
+	 * 
+	 * @param patientName       a string contains the name of the patient that
+	 *                          should be added
+	 * @param patientID         a string contains the ID of the patient that should
+	 *                          b added
+	 * @param patientpostalCode a string contains the postal code of the patient
+	 *                          that should be added
+	 * @param patientAge        an integer contains the age of the patient that
+	 *                          should be added
+	 * @return boolean which is false if it failed
+	 */
+	public boolean addPatient(String patientName, String patientID, String patientpostalCode, int patientAge) {
+		PostalCode postalCode = null;
+		try {
+			postalCode = new PostalCode(patientpostalCode);
+		} catch (InvalidPostalCodeException e) {
+			System.out.println("\tInvalid PostalCode");
+			return false;
+		}
+		Patient patient = null;
+		try {
+			patient = new Patient(patientName, patientID, patientAge, postalCode);
+		}
 
-    	if(!patientList.addPatient(patient))
-    	{
-    		System.out.println( "\tFailed to add a patient to a patientList" );
-    		return false;
-    	}
-    	int HIndex=postalCode.getRegionHorizontalIndex();
-    	int VIndex=postalCode.getRegionVerticalIndex();
-    	if(!histogram.addAPatientToRegion(VIndex,HIndex))
-    	{
-    		System.out.println( "\tFailed to assign  a patient to a region" );
-    		return false;
-    	}
+		catch (InvalidNameException e) {
+			System.out.println("\tInvalid patient name");
+			return false;
+		} catch (InvalidAgeException e) {
+			System.out.println("\tInvalid patient age");
+			return false;
+		} catch (InvalidIDException e) {
+			System.out.println("\tInvalid patient ID");
+			return false;
+		} catch (InvalidPostalCodeException e) {
+			System.out.println("\tInvalid patient Postal Code");
+			return false;
+		}
 
+		if (!patientList.addPatient(patient)) {
+			System.out.println("\tFailed to add a patient to a patientList");
+			return false;
+		}
+		int HIndex = postalCode.getRegionHorizontalIndex();
+		int VIndex = postalCode.getRegionVerticalIndex();
+		if (!histogram.addAPatientToRegion(VIndex, HIndex)) {
+			System.out.println("\tFailed to assign  a patient to a region");
+			return false;
+		}
 
-
-
-		//		(-1, 1)(0, 1)(1, 1)		
-		//		(-1, 0)      (1, 0)
-		//		(-1,-1)(0,-1)(1,-1)
+		// (-1, 1)(0, 1)(1, 1)
+		// (-1, 0) (1, 0)
+		// (-1,-1)(0,-1)(1,-1)
 		//
-		for(int horizontal = -1; horizontal <= 1; horizontal++){
-			for(int vertical = -1; vertical <= 1; vertical++){
-				if(
-					VIndex + vertical < 20 &&
-					VIndex + vertical >= 0 &&
-					HIndex + horizontal < 10 &&
-					HIndex + horizontal >= 0 ){
-				if(!updateNeighbours(VIndex + vertical, HIndex + horizontal)){
-					System.out.println("Error updating neighbours, failed to addPatient");
-					return false;
+		for (int horizontal = -1; horizontal <= 1; horizontal++) {
+			for (int vertical = -1; vertical <= 1; vertical++) {
+				if (VIndex + vertical < 20 && VIndex + vertical >= 0 && HIndex + horizontal < 10
+						&& HIndex + horizontal >= 0) {
+					if (!updateNeighbours(VIndex + vertical, HIndex + horizontal)) {
+						System.out.println("Error updating neighbours, failed to addPatient");
+						return false;
+					}
 				}
 			}
 		}
+
+		return true;
 	}
-    
-return true;
-}
 
+	public boolean updateNeighbours(int VIndex, int HIndex) {
+		ArrayList<Integer> neighboursCaseCount = new ArrayList<Integer>();
+		for (int horizontal = -1; horizontal <= 1; horizontal++) {
+			for (int vertical = -1; vertical <= 1; vertical++) {
+				if ((vertical == 0 && horizontal == 0) && VIndex + vertical < 20 && VIndex + vertical >= 0
+						&& HIndex + horizontal < 10 && HIndex + horizontal >= 0) {
+					neighboursCaseCount.add(histogram.getPatientsCountInRegion(VIndex + vertical, HIndex + horizontal));
 
-public boolean updateNeighbours(int VIndex,int HIndex){
-	ArrayList<Integer> neighboursCaseCount= new ArrayList<Integer> ();
-	for(int horizontal = -1; horizontal <= 1; horizontal++){
-		for(int vertical = -1; vertical <= 1; vertical++){
-			if(
-				(vertical == 0 && horizontal == 0) &&
-				VIndex + vertical < 20 &&
-				VIndex + vertical >= 0 &&
-				HIndex + horizontal < 10 &&
-				HIndex + horizontal >= 0 ){
-			neighboursCaseCount.add(histogram.getPatientsCountInRegion(VIndex + vertical,HIndex + horizontal));
-			
+				}
 			}
 		}
-	}
 
-	if(!riskCodeMap.updateRiskInARegion(VIndex,HIndex,histogram.getPatientsCountInRegion(VIndex,HIndex),neighboursCaseCount))
-	{
-		System.out.println("\tFailed to update the risk code map");
-		return false;
+		if (!riskCodeMap.updateRiskInARegion(VIndex, HIndex, histogram.getPatientsCountInRegion(VIndex, HIndex),
+				neighboursCaseCount)) {
+			System.out.println("\tFailed to update the risk code map");
+			return false;
+		}
+		return true;
 	}
-	return true;
-}
 
 }
