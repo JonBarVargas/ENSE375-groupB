@@ -18,7 +18,6 @@ public class App {
 	private PatientList patientList;
 	private PatientHistogram histogram;
 	private RiskCodeMap riskCodeMap;
-	private static Scanner myInput;
 
 	/**
 	 * Constructor that initalize all private data
@@ -27,7 +26,7 @@ public class App {
 		patientList = new PatientList();
 		histogram = new PatientHistogram();
 		riskCodeMap = new RiskCodeMap();
-		myInput = new Scanner(System.in);
+	
 	}
 
 	/**
@@ -46,7 +45,7 @@ public class App {
 	 */
 	public static void main(String[] args) {
 		App app = new App();
-
+		Scanner myInput = new Scanner(System.in);
 		boolean stop = false;
 		String patientName, patientID, patientpostalCode;
 		int patientAge;
@@ -124,7 +123,7 @@ public class App {
 	 * @return int the value choices by the user from 1 to 4 or 0 for a bad choice
 	 */
 	public static int getAChoice() {
-		// Scanner myInput = new Scanner( System.in );
+		Scanner myInput = new Scanner( System.in );
 		System.out.print("Enter a number from 1 to 4: ");
 		int choice;
 		try {
@@ -268,25 +267,20 @@ public class App {
 					VIndex + vertical >= 0 &&
 					HIndex + horizontal < 10 &&
 					HIndex + horizontal >= 0 ){
-				//neighboursCaseCount.add(histogram.getPatientsCountInRegion(VIndex + vertical,HIndex + horizontal));
-				if(!updateNeighbours(VIndex + vertical, HIndex + horizontal)) return false;
+				if(!updateNeighbours(VIndex + vertical, HIndex + horizontal)){
+					System.out.println("Error updating neighbours, failed to addPatient");
+					return false;
 				}
 			}
 		}
-		
+	}
     
-
-	// if(!riskCodeMap.updateRiskInARegion(VIndex,HIndex,histogram.getPatientsCountInRegion(VIndex,HIndex),neighboursCaseCount))
-	// {
-	// 	System.out.println("\tFailed to update the risk code map");
-	// 	return false;
-	return true;
+return true;
 }
 
 
 public boolean updateNeighbours(int VIndex,int HIndex){
 	ArrayList<Integer> neighboursCaseCount= new ArrayList<Integer> ();
-
 	for(int horizontal = -1; horizontal <= 1; horizontal++){
 		for(int vertical = -1; vertical <= 1; vertical++){
 			if(
@@ -310,24 +304,3 @@ public boolean updateNeighbours(int VIndex,int HIndex){
 }
 
 }
-
-
-
-	// for (int i=-1;i<=1;i+=2){
-    	// 	if (i == 1 && VIndex == 84) {	
-		// 	neighboursCaseCount.add(histogram.getPatientsCountInRegion(65,HIndex));
-		// } else if (i == -1 && VIndex == 65) {
-		// 	neighboursCaseCount.add(histogram.getPatientsCountInRegion(84, HIndex));
-		// } else if() {
-		// 	neighboursCaseCount.add(histogram.getPatientsCountInRegion(VIndex + 1, HIndex));
-		// }
-    	// }
-    	// for (int i=-1;i<=1;i+=2){
-    	// 	if (i == -1 && HIndex == 0) {
-		// 	neighboursCaseCount.add(histogram.getPatientsCountInRegion(VIndex, 9));
-		// } else if (i == 1 && HIndex == 9) {
-		// 	neighboursCaseCount.add(histogram.getPatientsCountInRegion(VIndex, 0));
-		// } else {
-		// 	neighboursCaseCount.add(histogram.getPatientsCountInRegion(VIndex, HIndex));
-		// }
-	// }
