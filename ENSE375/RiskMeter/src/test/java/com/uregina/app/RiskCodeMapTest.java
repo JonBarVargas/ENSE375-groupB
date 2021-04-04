@@ -100,7 +100,7 @@ public class RiskCodeMapTest
     {
         correctCode = false;
         
-        aux = testRiskMap.updateRiskInARegion(VTestCoordinate, HTestCoordinate, 7, dummyCases);
+        aux = testRiskMap.updateRiskInARegion(VTestCoordinate, HTestCoordinate, 8, dummyCases);
 
         if(testRiskMap.getRiskInARegion(VTestCoordinate, HTestCoordinate) == 'O')
             correctCode = true;
@@ -112,7 +112,7 @@ public class RiskCodeMapTest
     {
         correctCode = false;
         
-        aux = testRiskMap.updateRiskInARegion(VTestCoordinate, HTestCoordinate, 10, dummyCases);
+        aux = testRiskMap.updateRiskInARegion(VTestCoordinate, HTestCoordinate, 11, dummyCases);
 
         if(testRiskMap.getRiskInARegion(VTestCoordinate, HTestCoordinate) == 'R')
             correctCode = true;
