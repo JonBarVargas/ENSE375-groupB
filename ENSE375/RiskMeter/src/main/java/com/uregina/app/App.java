@@ -199,7 +199,8 @@ public class App
     	}
     	catch(InvalidPostalCodeException e){
     		System.out.println( "\tInvalid PostalCode" );
-    	}
+		return false;
+	}
     	Patient patient=null;
     	try{
     		patient= new Patient(patientName, patientID, patientAge,postalCode);
