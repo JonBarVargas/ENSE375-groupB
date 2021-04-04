@@ -10,7 +10,7 @@ Team members:
 - Jonathan Vargas
 
 Project Step 4 - April 5, 2021
-1. addPatient test class (version 1): Karlee Fidek
+1. addPatient test class (version 1): Karlee Fidek (AppAddPatientTest.java)
 2. addPatient test class (version 2): Jonathan Vargas
 3. addPatient method corrections:
 4. deletePatient test class:
