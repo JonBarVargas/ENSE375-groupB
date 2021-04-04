@@ -1,21 +1,20 @@
 package com.uregina.app;
 
-import static org.junit.Assert.*;
-
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.InputStream;
+import java.io.PrintStream;
+import org.junit.After;
+import org.junit.Before;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 import org.junit.Test;
 
 
-import org.junit.*;
-import java.io.*;
-
-/**
- * Unit test for App.
- */
-public class AppTest 
-{
-
+public class AppAddPatientInputTest {
     private final InputStream systemIn = System.in;
     private final PrintStream systemOut = System.out;
+    //App app;
 
     private ByteArrayInputStream testIn;
     private ByteArrayOutputStream testOut;
@@ -40,22 +39,17 @@ public class AppTest
         System.setIn(systemIn);
         System.setOut(systemOut);
     }
-    /**
-     * Rigorous Test :-)
-     */
+
+
     @Test
-    public void getAChoice_NonValid_Equals()
-    {
+    public void addPatient_validPatient_riskCodeMapUpdated(){
+        String[] args = null;
+
+        provideInput("1 John Smith\n 2\n");
+        App.main(args);
+
     
-	provideInput("5");
-	try{
-        	assertEquals(0, App.getAChoice());
-        }
-        catch(Exception e)
-        {
-        	assertTrue(false);
-        }
     }
 
 
- }
+}

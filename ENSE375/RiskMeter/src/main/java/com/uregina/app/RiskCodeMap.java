@@ -54,10 +54,14 @@ public class RiskCodeMap {
 
 
 	public char calculateRisk(int caseCount){
-		if (caseCount >= 10 ) return 'R';
-		if (caseCount >= 7 && caseCount < 10) return 'O';
-		if (caseCount >= 3 && caseCount < 7) return 'Y';
-		if (caseCount >= 0 && caseCount < 3) return 'B';
+
+		//His description is wrong of brackets
+		//He says that (x,y] means including x, and exclude y
+		//it is actually exclude x and include y
+		if (caseCount > 10 ) return 'R';
+		if (caseCount > 7 && caseCount <= 10) return 'O';
+		if (caseCount > 3 && caseCount <= 7) return 'Y';
+		if (caseCount > 0 && caseCount <= 3) return 'B';
 		return 'G';
 
 
