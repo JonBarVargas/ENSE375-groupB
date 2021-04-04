@@ -47,71 +47,71 @@ public class seleniumTest {
     }
 
 
-//     @Test
-//     public void signUp(){
-//         Random r = new Random();
-//         int random = r.nextInt(100000);
-//         driver.get(url);
-//         driver.findElement(By.linkText("Sign in")).click();
-//     driver.findElement(By.id("email_create")).click();
-//     driver.findElement(By.id("email_create")).sendKeys("tapopi"+random+"@0pppp.com");
-//     driver.findElement(By.id("create-account_form")).click();
-//     driver.findElement(By.cssSelector("#SubmitCreate > span")).click();
+    @Test
+    public void signUp(){
+        Random r = new Random();
+        int random = r.nextInt(100000);
+        driver.get(url);
+        driver.findElement(By.linkText("Sign in")).click();
+    driver.findElement(By.id("email_create")).click();
+    driver.findElement(By.id("email_create")).sendKeys("tapopi"+random+"@0pppp.com");
+    driver.findElement(By.id("create-account_form")).click();
+    driver.findElement(By.cssSelector("#SubmitCreate > span")).click();
 
-//     //wait for page to load
-//     WebElement element;
-//     WebDriverWait wait = new WebDriverWait(driver, 20);
-//     element= wait.until(ExpectedConditions.elementToBeClickable(By.id("id_gender1")));
+    //wait for page to load
+    WebElement element;
+    WebDriverWait wait = new WebDriverWait(driver, 20);
+    element= wait.until(ExpectedConditions.elementToBeClickable(By.id("id_gender1")));
 
-//     driver.findElement(By.id("id_gender1")).click();
-//     driver.findElement(By.id("customer_firstname")).click();
-//     driver.findElement(By.id("customer_firstname")).sendKeys("John");
-//     driver.findElement(By.id("customer_lastname")).click();
-//     driver.findElement(By.id("customer_lastname")).sendKeys("Smith");
-//     driver.findElement(By.id("passwd")).click();
-//     driver.findElement(By.id("passwd")).sendKeys("password");
-//     driver.findElement(By.cssSelector(".required:nth-child(4)")).click();
-//     driver.findElement(By.id("days")).click();
-//     {
-//       driver.findElement(By.cssSelector("#days > option:nth-child(6)")).click();
-//     }
+    driver.findElement(By.id("id_gender1")).click();
+    driver.findElement(By.id("customer_firstname")).click();
+    driver.findElement(By.id("customer_firstname")).sendKeys("John");
+    driver.findElement(By.id("customer_lastname")).click();
+    driver.findElement(By.id("customer_lastname")).sendKeys("Smith");
+    driver.findElement(By.id("passwd")).click();
+    driver.findElement(By.id("passwd")).sendKeys("password");
+    driver.findElement(By.cssSelector(".required:nth-child(4)")).click();
+    driver.findElement(By.id("days")).click();
+    {
+      driver.findElement(By.cssSelector("#days > option:nth-child(6)")).click();
+    }
   
-//     driver.findElement(By.id("months")).click();
-//     {
-//         driver.findElement(By.cssSelector("#months > option:nth-child(2)")).click();
-//     }
+    driver.findElement(By.id("months")).click();
+    {
+        driver.findElement(By.cssSelector("#months > option:nth-child(2)")).click();
+    }
 
-//     driver.findElement(By.id("years")).click();
-//     {
-//         driver.findElement(By.cssSelector("#years > option:nth-child(35)")).click();
-//     }
+    driver.findElement(By.id("years")).click();
+    {
+        driver.findElement(By.cssSelector("#years > option:nth-child(35)")).click();
+    }
 
-//     driver.findElement(By.id("newsletter")).click();
-//     driver.findElement(By.id("optin")).click();
-//     driver.findElement(By.id("firstname")).click();
-//     driver.findElement(By.id("company")).click();
-//     driver.findElement(By.id("company")).sendKeys("Test Company");
-//     driver.findElement(By.id("address1")).click();
-//     driver.findElement(By.id("address1")).sendKeys("123 Test Rd.");
-//     driver.findElement(By.id("city")).click();
-//     driver.findElement(By.id("city")).sendKeys("Regina");
-//     driver.findElement(By.id("id_state")).click();
-//     {
-//         driver.findElement(By.cssSelector("#id_state > option:nth-child(54)")).click();
-//     }
+    driver.findElement(By.id("newsletter")).click();
+    driver.findElement(By.id("optin")).click();
+    driver.findElement(By.id("firstname")).click();
+    driver.findElement(By.id("company")).click();
+    driver.findElement(By.id("company")).sendKeys("Test Company");
+    driver.findElement(By.id("address1")).click();
+    driver.findElement(By.id("address1")).sendKeys("123 Test Rd.");
+    driver.findElement(By.id("city")).click();
+    driver.findElement(By.id("city")).sendKeys("Regina");
+    driver.findElement(By.id("id_state")).click();
+    {
+        driver.findElement(By.cssSelector("#id_state > option:nth-child(54)")).click();
+    }
 
-//     driver.findElement(By.id("postcode")).click();
-//     driver.findElement(By.id("postcode")).sendKeys("90210");
-//     driver.findElement(By.cssSelector(".postcode")).click();
-//     driver.findElement(By.id("phone_mobile")).click();
-//     driver.findElement(By.id("phone_mobile")).sendKeys("555555555");
-//     driver.findElement(By.cssSelector(".submit")).click();
-//     driver.findElement(By.id("alias")).click();
-//     driver.findElement(By.id("alias")).sendKeys("First Address");
-//     driver.findElement(By.cssSelector("#submitAccount > span")).click();
-//     assertEquals(driver.getTitle(),"My account - My Store");
-//     driver.findElement(By.linkText("Sign out")).click();
-//   }
+    driver.findElement(By.id("postcode")).click();
+    driver.findElement(By.id("postcode")).sendKeys("90210");
+    driver.findElement(By.cssSelector(".postcode")).click();
+    driver.findElement(By.id("phone_mobile")).click();
+    driver.findElement(By.id("phone_mobile")).sendKeys("555555555");
+    driver.findElement(By.cssSelector(".submit")).click();
+    driver.findElement(By.id("alias")).click();
+    driver.findElement(By.id("alias")).sendKeys("First Address");
+    driver.findElement(By.cssSelector("#submitAccount > span")).click();
+    assertEquals(driver.getTitle(),"My account - My Store");
+    driver.findElement(By.linkText("Sign out")).click();
+  }
 
 
 
