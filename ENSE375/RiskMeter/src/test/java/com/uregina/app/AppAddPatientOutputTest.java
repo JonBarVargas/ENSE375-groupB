@@ -4,6 +4,8 @@ import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.InputStream;
 import java.io.PrintStream;
+import java.nio.charset.Charset;
+
 import org.junit.After;
 import org.junit.Before;
 import static org.junit.Assert.*;
@@ -44,38 +46,42 @@ public class AppAddPatientOutputTest {
     @Test
     public void addPatient_validPatient_riskCodeMapUpdated(){
         App app = new App();
-        provideInput("tristan\n123456700\nK1S-4X2\n25\n");
+        
+        String seperator = System.getProperty("line.separator");
+        provideInput("tristan" +seperator +"123456700" + seperator + 
+        "K1S-4X2" + seperator +"25" +seperator);
         App.addPatientOption(app);
-        provideInput("tristan\n123456000\nK1S-5X2\n25\n");
+        provideInput("tristan"+seperator + "123456000"+seperator + "K1S-5X2"+seperator + "25"+seperator);
         App.addPatientOption(app);
-        provideInput("tristan\n123450701\nK1S-6X2\n25\n");
+        provideInput("tristan"+seperator + "123450701"+seperator + "K1S-6X2"+seperator + "25"+seperator);
         App.addPatientOption(app);
-        provideInput("tristan\n120000701\nK1T-5X2\n25\n");
+        provideInput("tristan"+seperator + "120000701"+seperator + "K1T-5X2"+seperator + "25"+seperator);
         App.addPatientOption(app);
         String expectedOutput = "" +
-        "A  G  G  G  G  G  G  G  G  G  G\r\n"+
-        "B  G  G  G  G  G  G  G  G  G  G\r\n"+ 
-        "C  G  G  G  G  G  G  G  G  G  G\r\n"+
-        "D  G  G  G  G  G  G  G  G  G  G\r\n"+
-        "E  G  G  G  G  G  G  G  G  G  G\r\n"+
-        "F  G  G  G  G  G  G  G  G  G  G\r\n"+
-        "G  G  G  G  G  G  G  G  G  G  G\r\n"+
-        "H  G  G  G  G  G  G  G  G  G  G\r\n"+
-        "I  G  G  G  G  G  G  G  G  G  G\r\n"+
-        "J  G  G  G  G  G  G  G  G  G  G\r\n"+
-        "K  G  G  G  G  G  G  G  G  G  G\r\n"+
-        "L  G  G  G  G  G  G  G  G  G  G\r\n"+
-        "M  G  G  G  G  G  G  G  G  G  G\r\n"+
-        "N  G  G  G  G  G  G  G  G  G  G\r\n"+
-        "O  G  G  G  G  G  G  G  G  G  G\r\n"+
-        "P  G  G  G  G  G  G  G  G  G  G\r\n"+
-        "Q  G  G  G  G  G  G  G  G  G  G\r\n"+
-        "R  G  G  G  G  G  G  G  G  G  G\r\n"+
-        "S  G  G  G  G  B  B  B  G  G  G\r\n"+
-        "T  G  G  G  G  B  B  B  G  G  G\r\n";
+        "A  G  G  G  G  G  G  G  G  G  G"+seperator +
+        "B  G  G  G  G  G  G  G  G  G  G"+seperator +
+        "C  G  G  G  G  G  G  G  G  G  G"+seperator +
+        "D  G  G  G  G  G  G  G  G  G  G"+seperator +
+        "E  G  G  G  G  G  G  G  G  G  G"+seperator +
+        "F  G  G  G  G  G  G  G  G  G  G"+seperator +
+        "G  G  G  G  G  G  G  G  G  G  G"+seperator +
+        "H  G  G  G  G  G  G  G  G  G  G"+seperator +
+        "I  G  G  G  G  G  G  G  G  G  G"+seperator +
+        "J  G  G  G  G  G  G  G  G  G  G"+seperator +
+        "K  G  G  G  G  G  G  G  G  G  G"+seperator +
+        "L  G  G  G  G  G  G  G  G  G  G"+seperator +
+        "M  G  G  G  G  G  G  G  G  G  G"+seperator +
+        "N  G  G  G  G  G  G  G  G  G  G"+seperator +
+        "O  G  G  G  G  G  G  G  G  G  G"+seperator +
+        "P  G  G  G  G  G  G  G  G  G  G"+seperator +
+        "Q  G  G  G  G  G  G  G  G  G  G"+seperator +
+        "R  G  G  G  G  G  G  G  G  G  G"+seperator +
+        "S  G  G  G  G  B  B  B  G  G  G"+seperator +
+        "T  G  G  G  G  B  B  B  G  G  G"+seperator;
         App.printMapOption(app);
         String actualOutput = getOutput();
-        assertTrue(actualOutput.contains((CharSequence)expectedOutput));
+       
+        assertTrue(actualOutput.toLowerCase().contains(new String(expectedOutput.toLowerCase().getBytes(Charset.defaultCharset()))));
     }
 
 
