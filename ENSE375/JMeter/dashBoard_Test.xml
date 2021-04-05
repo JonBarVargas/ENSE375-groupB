@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<results>
+<absoluteDefinition>
+	<unstable>-1</unstable>
+	<failed>-1</failed>
+	<calculated>0.0</calculated>
+</absoluteDefinition>
+<average>
+	<BlazeDemo>
+		<currentBuildAvg>1180</currentBuildAvg>
+	</BlazeDemo>
+	<Confirmation>
+		<currentBuildAvg>492</currentBuildAvg>
+	</Confirmation>
+	<Reserve>
+		<currentBuildAvg>455</currentBuildAvg>
+	</Reserve>
+</average>
+<median>
+	<BlazeDemo>
+		<currentBuildMed>428</currentBuildMed>
+	</BlazeDemo>
+	<Confirmation>
+		<currentBuildMed>348</currentBuildMed>
+	</Confirmation>
+	<Reserve>
+		<currentBuildMed>372</currentBuildMed>
+	</Reserve>
+</median>
+<percentile>
+	<BlazeDemo>
+		<currentBuild90Line>2300</currentBuild90Line>
+	</BlazeDemo>
+	<Confirmation>
+		<currentBuild90Line>650</currentBuild90Line>
+	</Confirmation>
+	<Reserve>
+		<currentBuild90Line>627</currentBuild90Line>
+	</Reserve>
+</percentile>
+</results>

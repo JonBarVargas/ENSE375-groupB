@@ -213,6 +213,9 @@ public class App {
 	 * @return boolean which is false if it failed
 	 */
 	public boolean addPatient(String patientName, String patientID, String patientpostalCode, int patientAge) {
+		//Implementation correction by 
+		//Tristan Brown-Hannibal
+		
 		PostalCode postalCode = null;
 		try {
 			postalCode = new PostalCode(patientpostalCode);
@@ -251,7 +254,7 @@ public class App {
 		}
 
 		// (-1, 1)(0, 1)(1, 1)
-		// (-1, 0) (1, 0)
+		// (-1, 0)      (1, 0)
 		// (-1,-1)(0,-1)(1,-1)
 		//
 		for (int horizontal = -1; horizontal <= 1; horizontal++) {
@@ -259,7 +262,9 @@ public class App {
 				if (VIndex + vertical < 20 && VIndex + vertical >= 0 && HIndex + horizontal < 10
 						&& HIndex + horizontal >= 0) {
 					if (!updateNeighbours(VIndex + vertical, HIndex + horizontal)) {
-						System.out.println("Error updating neighbours, failed to addPatient");
+						//When we add a patient the neighbors may have a new risk code
+						//we must recheck each neighbor and reclaculate the risk code of each
+						System.out.println("Error updating neighbours, failed to update neighbours");
 						return false;
 					}
 				}
@@ -270,6 +275,8 @@ public class App {
 	}
 
 	public boolean updateNeighbours(int VIndex, int HIndex) {
+		//calculates all the cases of neighbors of a specific region
+		//will update the region
 		ArrayList<Integer> neighboursCaseCount = new ArrayList<Integer>();
 		for (int horizontal = -1; horizontal <= 1; horizontal++) {
 			for (int vertical = -1; vertical <= 1; vertical++) {

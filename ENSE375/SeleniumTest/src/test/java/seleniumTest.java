@@ -21,15 +21,7 @@ public class seleniumTest {
     String password = "password";
     @BeforeClass
     public static void initDrivers(){
-
-        String browser = System.getProperty("browser");
-        browser.trim();
-
-        if(browser.equals("firefox")){
-            driver = new FirefoxDriver();
-        } else{
-            driver = new ChromeDriver();
-        }
+        driver = new FirefoxDriver();
        
 
     }
