@@ -12,7 +12,7 @@ Team members:
 Project Step 4 - April 5, 2021
 1. addPatient test class (version 1): Karlee Fidek (AppAddPatientTest.java)
 2. addPatient test class (version 2): Jonathan Vargas
-3. addPatient method corrections:
-4. deletePatient test class:
-5. deletePatient method corrections:
+3. addPatient method corrections: Tristan Brown-Hannibal
+4. deletePatient test class: Qurrat Ulain
+5. deletePatient method corrections: Anupras Burokas
 
