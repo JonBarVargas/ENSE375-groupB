@@ -179,7 +179,7 @@ public class App {
 			return false;
 		}
 
-		// tests for no patients
+		// tests for no patients 
 		if (VIndex != 0){
 			neighboursCaseCount.add(histogram.getPatientsCountInRegion(VIndex - 1, HIndex));
 		}
