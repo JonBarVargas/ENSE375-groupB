@@ -163,8 +163,14 @@ public class App {
 				neighboursCaseCount.add(histogram.getPatientsCountInRegion(VIndex + i, HIndex));
 			}
 		}
-		for (int i = -1; i <= 1; i += 2) {
-			neighboursCaseCount.add(histogram.getPatientsCountInRegion(VIndex, HIndex + i));
+		for (int i = -1; i <= 1; i += 2){
+			if(HIndex + i < 0){
+				neighboursCaseCount.add(histogram.getPatientsCountInRegion(VIndex, 9));
+			} else if(HIndex + i > 9){
+				neighboursCaseCount.add(histogram.getPatientsCountInRegion(VIndex, 0));
+			} else {
+				neighboursCaseCount.add(histogram.getPatientsCountInRegion(VIndex, HIndex + i));
+			}
 		}
 		if (!riskCodeMap.updateRiskInARegion(VIndex, HIndex, caseCount, neighboursCaseCount)) {
 			System.out.println("\tFailed to update the risk code map");
