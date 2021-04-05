@@ -49,7 +49,7 @@ public class AppAddPatientTest {
 
 	@Test
 	public void addPatient_validPatientAgain_true() {
-		boolean addSuccessful = app.addPatient("Karlee", "123456789", "K1A-3T6", 21);
+		boolean addSuccessful = app.addPatient("Karlee", "112233445", "K1A-3T6", 21);
 		assertTrue(addSuccessful);
 	}
 }
