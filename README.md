@@ -8,6 +8,13 @@
 
 [Dockerhub Repo](https://hub.docker.com/repository/docker/ense375groupb/groupb-activity4)
 
+1. addPatient test class (version 1): Karlee Fidek (AppAddPatientTest.java)
+2. addPatient test class (version 2): Jonathan Vargas
+3. addPatient method corrections: Tristan Brown-Hannibal
+4. deletePatient test class: Qurrat Ulain
+5. deletePatient method corrections: Anupras Burokas
+
+
 # ENSE375 Group-B
 _"Don't fix bugs later; fix them now."_ -Steve Maguire
 <br>
