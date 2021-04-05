@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<results>
+<api>
+	<uri>BlazeDemo</uri>
+	<samples>75</samples>
+	<average>1180</average>
+	<min>303</min>
+	<median>428</median>
+	<ninetieth>2300</ninetieth>
+	<max>5607</max>
+	<httpCode>200</httpCode>
+	<errors>0.0</errors>
+</api>
+<api>
+	<uri>Confirmation</uri>
+	<samples>75</samples>
+	<average>492</average>
+	<min>297</min>
+	<median>348</median>
+	<ninetieth>650</ninetieth>
+	<max>1936</max>
+	<httpCode>200</httpCode>
+	<errors>0.0</errors>
+</api>
+<api>
+	<uri>Reserve</uri>
+	<samples>75</samples>
+	<average>455</average>
+	<min>302</min>
+	<median>372</median>
+	<ninetieth>627</ninetieth>
+	<max>1891</max>
+	<httpCode>200</httpCode>
+	<errors>0.0</errors>
+</api>
+</results>
