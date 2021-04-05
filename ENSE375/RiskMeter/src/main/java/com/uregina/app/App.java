@@ -147,6 +147,7 @@ public class App {
 		int VIndex = patient.getPostalCode().getRegionVerticalIndex();
 		if (!histogram.deleteAPatientFromRegion(VIndex, HIndex)) {
 			System.out.println("\tFailed to update the patient Count");
+			return false;
 		}
 		int caseCount = histogram.getPatientsCountInRegion(VIndex, HIndex);
 		ArrayList<Integer> neighboursCaseCount = new ArrayList<Integer>();
