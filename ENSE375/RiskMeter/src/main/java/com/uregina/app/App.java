@@ -143,22 +143,49 @@ public class App {
 			System.out.println("\tPatient Not Found");
 			return false;
 		}
+
 		int HIndex = patient.getPostalCode().getRegionHorizontalIndex();
 		int VIndex = patient.getPostalCode().getRegionVerticalIndex();
+
 		if (!histogram.deleteAPatientFromRegion(VIndex, HIndex)) {
 			System.out.println("\tFailed to update the patient Count");
+			return false;
 		}
+
 		int caseCount = histogram.getPatientsCountInRegion(VIndex, HIndex);
 		ArrayList<Integer> neighboursCaseCount = new ArrayList<Integer>();
-		for (int i = -1; i <= 1; i += 2) {
-			neighboursCaseCount.add(histogram.getPatientsCountInRegion(VIndex + i, HIndex));
+		for (int i = -1; i <= 1; i += 2){
+			if(VIndex + i < 65){
+				neighboursCaseCount.add(histogram.getPatientsCountInRegion(84, HIndex));
+			} else if(VIndex + i > 84){
+				neighboursCaseCount.add(histogram.getPatientsCountInRegion(65, HIndex));
+			} else {
+				neighboursCaseCount.add(histogram.getPatientsCountInRegion(VIndex + i, HIndex));
+			}
 		}
-		for (int i = -1; i <= 1; i += 2) {
-			neighboursCaseCount.add(histogram.getPatientsCountInRegion(VIndex, HIndex + i));
+
+		for (int i = -1; i <= 1; i += 2){
+			if(HIndex + i < 0){
+				neighboursCaseCount.add(histogram.getPatientsCountInRegion(VIndex, 9));
+			} else if(HIndex + i > 9){
+				neighboursCaseCount.add(histogram.getPatientsCountInRegion(VIndex, 0));
+			} else {
+				neighboursCaseCount.add(histogram.getPatientsCountInRegion(VIndex, HIndex + i));
+			}
 		}
+
 		if (!riskCodeMap.updateRiskInARegion(VIndex, HIndex, caseCount, neighboursCaseCount)) {
 			System.out.println("\tFailed to update the risk code map");
 			return false;
+		}
+
+		// tests for no patients 
+		if (VIndex != 0){
+			neighboursCaseCount.add(histogram.getPatientsCountInRegion(VIndex - 1, HIndex));
+		}
+		
+		if (HIndex != 0){
+			neighboursCaseCount.add(histogram.getPatientsCountInRegion(VIndex, HIndex - 1));
 		}
 		return true;
 	}
