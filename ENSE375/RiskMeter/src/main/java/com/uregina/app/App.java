@@ -213,6 +213,9 @@ public class App {
 	 * @return boolean which is false if it failed
 	 */
 	public boolean addPatient(String patientName, String patientID, String patientpostalCode, int patientAge) {
+		//Implementation correction by 
+		//Tristan Brown-Hannibal
+		
 		PostalCode postalCode = null;
 		try {
 			postalCode = new PostalCode(patientpostalCode);
