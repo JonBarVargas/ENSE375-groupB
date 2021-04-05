@@ -163,6 +163,7 @@ public class App {
 				neighboursCaseCount.add(histogram.getPatientsCountInRegion(VIndex + i, HIndex));
 			}
 		}
+
 		for (int i = -1; i <= 1; i += 2){
 			if(HIndex + i < 0){
 				neighboursCaseCount.add(histogram.getPatientsCountInRegion(VIndex, 9));
@@ -172,9 +173,19 @@ public class App {
 				neighboursCaseCount.add(histogram.getPatientsCountInRegion(VIndex, HIndex + i));
 			}
 		}
+
 		if (!riskCodeMap.updateRiskInARegion(VIndex, HIndex, caseCount, neighboursCaseCount)) {
 			System.out.println("\tFailed to update the risk code map");
 			return false;
+		}
+
+		// tests for no patients
+		if (VIndex != 0){
+			neighboursCaseCount.add(histogram.getPatientsCountInRegion(VIndex - 1, HIndex));
+		}
+		
+		if (HIndex != 0){
+			neighboursCaseCount.add(histogram.getPatientsCountInRegion(VIndex, HIndex - 1));
 		}
 		return true;
 	}
