@@ -46,10 +46,4 @@ public class AppAddPatientTest {
 		boolean addSuccessful = app.addPatient("Dr. ElDarieby", "112233445", "K1A-2F7", 40);
 		assertFalse(addSuccessful);
 	}
-
-	@Test
-	public void addPatient_validPatientAgain_true() {
-		boolean addSuccessful = app.addPatient("Karlee", "112233445", "K1A-3T6", 21);
-		assertTrue(addSuccessful);
-	}
 }
