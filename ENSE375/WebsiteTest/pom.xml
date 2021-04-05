@@ -64,7 +64,7 @@
             	<version>2.22.1</version>
 				<configuration>
           			<systemPropertyVariables>
-            			<browser>${browser}</browser>
+            			<browser>firefox</browser>
           			</systemPropertyVariables>
         		</configuration>
         	</plugin>
