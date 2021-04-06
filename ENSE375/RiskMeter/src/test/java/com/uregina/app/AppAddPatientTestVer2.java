@@ -74,5 +74,19 @@ public class AppAddPatientTestVer2 {
 		assertFalse(testState);
 	}
 	
+	@Test
+	//This test is supposed to test the historgram bounds however the REGEX implementation from
+	//Postalcode.java sees it as an improper postal code 
+	public void addPatient_Region_false() {
+		testState = testApp.addPatient(validName, validPatientID, "K1A-10G8", validAge);
+		assertFalse(testState);
+	}
+
+	@Test
+	public void addPatient_unableToAddPatientList() {
+		testApp.addPatient(validName, validPatientID, validPostalCode, validAge);
+		testState = testApp.addPatient("winchester", validPatientID, validPostalCode, "90");
+		assertFalse(testState);
+	}
 	
 }
