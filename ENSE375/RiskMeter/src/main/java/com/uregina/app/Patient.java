@@ -19,7 +19,10 @@ public class Patient
 		} else{
 			throw new InvalidNameException(name);
 		}
-		if(age >= 0){
+		//This is a design constraint. Where we enter patients born around this century
+		//are kept in our records. We would like to keep record of people that are active
+		//patiets. After quick searches the oldest human was around 144 years old. 
+		if((age >= 0) && (age <= 144)){
 			this.age = age;
 		} else{
 			throw new InvalidAgeException(age);
@@ -35,9 +38,6 @@ public class Patient
 		} else{
 			throw new InvalidPostalCodeException();
 		}
-
-
-
 	}
 	public String getName()
 	{
@@ -61,7 +61,7 @@ public class Patient
 	*/
 	public boolean setAge(int age)
 	{	
-		if(age > 0){
+		if((age >= 0) && (age <= 144)){
 			this.age = age;
 			return true;
 		} else{
