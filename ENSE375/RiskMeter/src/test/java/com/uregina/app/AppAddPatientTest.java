@@ -45,6 +45,40 @@ public class AppAddPatientTest {
 		boolean addSuccessful = app.addPatient("Karlee", "112233445", "K1A-2F7", 21);
 		assertTrue(addSuccessful);
 	}
+	
+	@Test
+	public void addPatient_histogramUpperEdgeCaseVertical_true() {
+		boolean addSuccessful = app.addPatient("Karlee", "112233445", "K1T-2F7", 21);
+		assertTrue(addSuccessful);
+	}
+	
+	@Test
+	public void addPatient_HistogramLowerEdgeCaseVertical_true() {
+	        boolean addSuccessful = app.addPatient("Karlee", "112233445", "K1A-2F7", 21);
+	        assertTrue(addSuccessful);
+	}
+	
+	@Test
+	public void addPatient_HistogramUpperEdgeCaseHorizontal_true() {
+	       boolean addSuccessful = app.addPatient("Karlee", "112233445", "K1A-0B9", 21);
+	       assertTrue(addSuccessful);
+	}
+	
+	@Test
+	public void addPatient_HistogramLowerEdgeCaseHorizontal_true() {
+	       boolean addSuccessful = app.addPatient("Karlee", "112233445", "K1A-9B9", 21);
+	       assertTrue(addSuccessful);
+	}
+
+    //******************************RiskCode map TESTS ******************************/
+    	@Test
+    	public void patientAdd_2_patients_same_region()
+   	{
+        	App app = new App();
+        	app.addPatient("Julie", "123456789", "K1T-0B9", 31);
+        	boolean valid = app.addPatient("George", "987654321", "K1T-0B9", 44);
+        	assertTrue( valid );
+    	}
 
 	//
 	//Only need one of each failure case because the specific fail cases for each type of failure
