@@ -1,0 +1,2 @@
+"request_method","url","status_code","result","reason"
+"GET","http://testphp.vulnweb.com","200","accepted",""
