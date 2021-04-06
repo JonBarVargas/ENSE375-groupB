@@ -152,8 +152,8 @@ public class AppAddPatientTest {
 		
 		provideInput("Dr. ElDarieby" + separator + "112233445" + separator + "K1A-2F7" + separator + "40" + separator);
 		App.addPatientOption(app);
-		String expectedOutput = "\tPatient failed to be added";
-                String actualOutput = getOutput();
+		expectedOutput = "\tPatient failed to be added";
+                actualOutput = getOutput();
 		assertTrue(actualOutput.contains(expectedOutput));
         }
 
@@ -167,8 +167,8 @@ public class AppAddPatientTest {
 		
 		provideInput("Dr. ElDarieby" + separator + "123456789" + separator + "K1A-2F7" + separator + "40" + separator);
 		App.addPatientOption(app);
-		String expectedOutput = "\tPatient has been added successfully";
-                String actualOutput = getOutput();
+		expectedOutput = "\tPatient has been added successfully";
+                actualOutput = getOutput();
 		assertTrue(actualOutput.contains(expectedOutput));
         }
 }
