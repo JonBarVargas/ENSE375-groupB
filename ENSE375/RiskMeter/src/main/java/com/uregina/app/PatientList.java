@@ -54,4 +54,15 @@ public class PatientList {
     	public int getNumberofPatients() {
     	    return patientList.size();
     	}
+
+
+		public int getIndex(String ID){
+
+			for(int i = 0; i < patientList.size(); i++){
+				if(patientList.get(i).getID().equals(ID)){
+					return i;
+				}
+			}
+			return -1;
+		}
 }

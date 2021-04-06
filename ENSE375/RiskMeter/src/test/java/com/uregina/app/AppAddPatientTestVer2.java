@@ -28,7 +28,7 @@ public class AppAddPatientTestVer2 {
         invalidName ="WhatDoYouMean !@%^#)( is not a legal name?";
         validPostalCode = "K1A-5G8";
         invalidPostalCode = "YUH-6H5";
-        validPatientID = "12345678";
+        validPatientID = "123456789";
         invalidPatientID = "88767";
         validAge = 30;
         invalidAgeNeg = -1;
@@ -41,13 +41,13 @@ public class AppAddPatientTestVer2 {
 	public void addPatient_validPatient_true() {
 		boolean yeet = testApp.addPatient(validName, validPatientID, validPostalCode, validAge);
 		//boolean yeeter = testApp.addPatient();
-		assertTrue(true);
+		assertTrue(yeet);
 	}
 	
 	@Test
-	public void addPatient_invalidPostalCode_false() {
+	public void addPatient_invalidPostalCode_true() {
 		testState = testApp.addPatient(validName, validPatientID, validPostalCode, validAge);
-		assertFalse(testState);
+		assertTrue(testState);
 	}
 	
 	@Test
@@ -85,7 +85,7 @@ public class AppAddPatientTestVer2 {
 	@Test
 	public void addPatient_unableToAddPatientList() {
 		testApp.addPatient(validName, validPatientID, validPostalCode, validAge);
-		testState = testApp.addPatient("winchester", validPatientID, validPostalCode, "90");
+		testState = testApp.addPatient("winchester", validPatientID, validPostalCode, 90);
 		assertFalse(testState);
 	}
 	

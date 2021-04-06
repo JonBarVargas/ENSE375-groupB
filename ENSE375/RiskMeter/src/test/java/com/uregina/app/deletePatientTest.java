@@ -83,6 +83,54 @@ public class deletePatientTest {
 		boolean successful_delete = app.deletePatient("123456");
 		assertFalse(successful_delete);
 	}
+
+
+
+	@Test
+	public void deletePatient_riskCodeMapUpdated(){
+		App app = new App();
+        
+        String seperator = System.getProperty("line.separator");
+
+        provideInput("tristan"+seperator + "123456000"+seperator + "K1S-5X2"+seperator + "25"+seperator);
+        App.addPatientOption(app);
+        provideInput("tristan"+seperator + "123450701"+seperator + "K1S-6X2"+seperator + "25"+seperator);
+        App.addPatientOption(app);
+        provideInput("tristan"+seperator + "120000701"+seperator + "K1S-7X2"+seperator + "25"+seperator);
+        App.addPatientOption(app);
+		//DELETE LAST PATIENT ADDED
+		provideInput("120000701"+seperator);
+		App.removePatientOption(app);
+
+
+		String expectedOutput = "" +
+        "A  G  G  G  G  G  G  G  G  G  G"+seperator +
+        "B  G  G  G  G  G  G  G  G  G  G"+seperator +
+        "C  G  G  G  G  G  G  G  G  G  G"+seperator +
+        "D  G  G  G  G  G  G  G  G  G  G"+seperator +
+        "E  G  G  G  G  G  G  G  G  G  G"+seperator +
+        "F  G  G  G  G  G  G  G  G  G  G"+seperator +
+        "G  G  G  G  G  G  G  G  G  G  G"+seperator +
+        "H  G  G  G  G  G  G  G  G  G  G"+seperator +
+        "I  G  G  G  G  G  G  G  G  G  G"+seperator +
+        "J  G  G  G  G  G  G  G  G  G  G"+seperator +
+        "K  G  G  G  G  G  G  G  G  G  G"+seperator +
+        "L  G  G  G  G  G  G  G  G  G  G"+seperator +
+        "M  G  G  G  G  G  G  G  G  G  G"+seperator +
+        "N  G  G  G  G  G  G  G  G  G  G"+seperator +
+        "O  G  G  G  G  G  G  G  G  G  G"+seperator +
+        "P  G  G  G  G  G  G  G  G  G  G"+seperator +
+        "Q  G  G  G  G  G  G  G  G  G  G"+seperator +
+        "R  G  G  G  G  G  G  G  G  G  G"+seperator +
+        "S  G  G  G  G  G  B  B  G  G  G"+seperator +
+        "T  G  G  G  G  G  G  G  G  G  G"+seperator;
+        App.printMapOption(app);
+        String actualOutput = getOutput();
+
+		assertTrue(actualOutput.toLowerCase().contains(new String(expectedOutput.toLowerCase().getBytes(Charset.defaultCharset()))));
+
+
+	}
 	
 
 
