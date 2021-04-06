@@ -4,6 +4,7 @@
 - [JMeter Process](https://github.com/JonBarVargas/ENSE375-groupB/blob/main/ENSE375/JMeter/JMeter%20Process.pdf)
 - [Selenium Process](https://github.com/JonBarVargas/ENSE375-groupB/blob/main/ENSE375/SeleniumTest/Selenium%20Process.pdf)
 - [Jenkins & Dockerhub Deployment Process](https://github.com/JonBarVargas/ENSE375-groupB/blob/main/ENSE375/RiskMeter/Jenkins%20%26%20Dockerhub%20Deployment%20-%20Process.pdf)
+- [Probely Security Plugin Process](https://github.com/JonBarVargas/ENSE375-groupB/blob/main/ENSE375/SecurityPlugin-Probely/Security%20Plugin%20Process.pdf)
 
 
 [Dockerhub Repo](https://hub.docker.com/repository/docker/ense375groupb/groupb-activity4)
