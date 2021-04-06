@@ -329,9 +329,13 @@ public class App {
 		Scanner myInput = new Scanner(System.in);
 		String patientName, patientID, patientpostalCode;
 		int patientAge;
+		System.out.println("Patient Name");
 		patientName = myInput.nextLine();
+		System.out.println("Patient ID");
 		patientID = myInput.nextLine();
+		System.out.println("Patient Postal Code");
 		patientpostalCode = myInput.nextLine();
+		System.out.println("Age");
 		patientAge = myInput.nextInt();
 		myInput.nextLine();// gets rid of newline from nextInt
 		if (app.addPatient(patientName, patientID, patientpostalCode, patientAge)) {
