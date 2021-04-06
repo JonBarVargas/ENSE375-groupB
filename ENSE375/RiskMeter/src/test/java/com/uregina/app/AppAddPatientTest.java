@@ -69,16 +69,15 @@ public class AppAddPatientTest {
 	       boolean addSuccessful = app.addPatient("Karlee", "112233445", "K1A-9B9", 21);
 	       assertTrue(addSuccessful);
 	}
-
-    //******************************RiskCode map TESTS ******************************/
-    	@Test
-    	public void patientAdd_2_patients_same_region()
-   	{
-        	App app = new App();
-        	app.addPatient("Julie", "123456789", "K1T-0B9", 31);
-        	boolean valid = app.addPatient("George", "987654321", "K1T-0B9", 44);
-        	assertTrue( valid );
-    	}
+	
+	//Tests adding 2 patients to the list but also tests adding two patients in the same region to 
+	//the RiskCode map
+	@Test
+        public void addPatient_adding2Patients_true() {
+                app.addPatient("Karlee", "112233445", "K1A-2F7", 21);
+                boolean addSuccessful = app.addPatient("Dr. ElDarieby", "123456789", "K1A-2F7", 40);
+                assertTrue(addSuccessful);
+        }
 
 	//
 	//Only need one of each failure case because the specific fail cases for each type of failure
@@ -116,13 +115,6 @@ public class AppAddPatientTest {
 		assertFalse(addSuccessful);
 	}
 
-	@Test
-        public void addPatient_adding2Patients_true() {
-                app.addPatient("Karlee", "112233445", "K1A-2F7", 21);
-                boolean addSuccessful = app.addPatient("Dr. ElDarieby", "123456789", "K1A-2F7", 40);
-                assertTrue(addSuccessful);
-        }
-
 	//--------------------------------- Console Input Tests --------------------------------------//
 	
 
@@ -132,6 +124,59 @@ public class AppAddPatientTest {
 		App.addPatientOption(app);
 		String expectedOutput = "\tPatient has been added successfully";
                 String actualOutput = getOutput();
+		assertTrue(actualOutput.contains(expectedOutput));
+        }
+	
+	@Test
+	public void addPatient_histogramUpperEdgeCaseVerticalInput_successful() {
+		provideInput("Karlee" + separator + "112233445" + separator + "K1T-2F7" + separator + "21" + separator);
+		App.addPatientOption(app);
+		String expectedOutput = "\tPatient has been added successfully";
+                String actualOutput = getOutput();
+		assertTrue(actualOutput.contains(expectedOutput));
+	}
+	
+	@Test
+	public void addPatient_HistogramLowerEdgeCaseVerticalInput_successful() {
+		provideInput("Karlee" + separator + "112233445" + separator + "K1A-2F7" + separator + "21" + separator);
+		App.addPatientOption(app);
+		String expectedOutput = "\tPatient has been added successfully";
+                String actualOutput = getOutput();
+		assertTrue(actualOutput.contains(expectedOutput));
+	}
+	
+	@Test
+	public void addPatient_HistogramUpperEdgeCaseHorizontalInput_successful() {
+	       provideInput("Karlee" + separator + "112233445" + separator + "K1A-0B9" + separator + "21" + separator);
+	       App.addPatientOption(app);
+	       String expectedOutput = "\tPatient has been added successfully";
+               String actualOutput = getOutput();
+	       assertTrue(actualOutput.contains(expectedOutput));
+	}
+	
+	@Test
+	public void addPatient_HistogramLowerEdgeCaseHorizontalInput_successful() {
+	       provideInput("Karlee" + separator + "112233445" + separator + "K1A-9B9" + separator + "21" + separator);
+	       App.addPatientOption(app);
+	       String expectedOutput = "\tPatient has been added successfully";
+               String actualOutput = getOutput();
+	       assertTrue(actualOutput.contains(expectedOutput));
+	}
+	
+	//Tests adding 2 patients to the list but also tests adding two patients in the same region to 
+	//the RiskCode map
+        @Test
+        public void addPatient_adding2PatientsWithInput_successful() {
+		provideInput("Karlee" + separator + "112233445" + separator + "K1A-2F7" + separator + "21" + separator);
+		App.addPatientOption(app);
+		String expectedOutput = "\tPatient has been added successfully";
+                String actualOutput = getOutput();
+		assertTrue(actualOutput.contains(expectedOutput));
+		
+		provideInput("Dr. ElDarieby" + separator + "123456789" + separator + "K1A-2F7" + separator + "40" + separator);
+		App.addPatientOption(app);
+		expectedOutput = "\tPatient has been added successfully";
+                actualOutput = getOutput();
 		assertTrue(actualOutput.contains(expectedOutput));
         }
 
@@ -187,21 +232,6 @@ public class AppAddPatientTest {
 		provideInput("Dr. ElDarieby" + separator + "112233445" + separator + "K1A-2F7" + separator + "40" + separator);
 		App.addPatientOption(app);
 		expectedOutput = "\tPatient failed to be added";
-                actualOutput = getOutput();
-		assertTrue(actualOutput.contains(expectedOutput));
-        }
-
-        @Test
-        public void addPatient_adding2PatientsWithInput_successful() {
-		provideInput("Karlee" + separator + "112233445" + separator + "K1A-2F7" + separator + "21" + separator);
-		App.addPatientOption(app);
-		String expectedOutput = "\tPatient has been added successfully";
-                String actualOutput = getOutput();
-		assertTrue(actualOutput.contains(expectedOutput));
-		
-		provideInput("Dr. ElDarieby" + separator + "123456789" + separator + "K1A-2F7" + separator + "40" + separator);
-		App.addPatientOption(app);
-		expectedOutput = "\tPatient has been added successfully";
                 actualOutput = getOutput();
 		assertTrue(actualOutput.contains(expectedOutput));
         }
