@@ -7,7 +7,7 @@ import static org.junit.Assert.assertTrue;
 import org.junit.Test;
 import org.junit.Before;
 
-public class AppAddPatientTestVer2 {
+public class AppAddPatientVer2Test {
 
 	private App testApp;
     private String validName;
